@@ -1,2 +1,2 @@
-# weather_app
+# Weather Application
 Sample Weather app
