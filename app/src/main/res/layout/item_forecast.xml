@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sudhakar.app.weatherapp.ui.dashboard.forecast.ForecastItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rootView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/cyan"
+            android:clickable="true"
+            android:focusable="true"
+            android:transitionName="@{String.format(@string/cardView, viewModel.item.getDay())}"
+            app:cardCornerRadius="4dp"
+            tools:backgroundTint="@android:color/holo_orange_dark">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cyan"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textViewTimeOfDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:text="@{viewModel.item.getDay()}"
+                        android:textSize="20sp"
+                        android:transitionName="@{String.format(@string/dayOfWeek, viewModel.item.getDay())}"
+                        tools:text="Wed, 31 September" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutTempMaxMin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:transitionName="@{String.format(@string/tempMaxMin, viewModel.item.getDay())}">
+
+                        <TextView
+                            android:id="@+id/forecast.temperature_min"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="?attr/listPreferredItemPaddingRight"
+                            android:text="@{viewModel.item.main.getTempMinString()}"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            tools:text="666" />
+
+                        <TextView
+                            android:id="@+id/forecast.temperature_max"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="?attr/listPreferredItemPaddingLeft"
+                            android:paddingEnd="?attr/listPreferredItemPaddingRight"
+                            android:text="@{viewModel.item.main.getTempMaxString()}"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            tools:text="666" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageViewForecastIcon"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:textSize="45sp"
+                    android:transitionName="@{String.format(@string/forecastIcon, viewModel.item.getDay())}"
+                    app:setWeatherIcon="@{viewModel.item.getWeatherItem().icon}"
+                    tools:src="@drawable/ic_splash_big_cloud"
+                    tools:text="Clear" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </RelativeLayout>
+</layout>

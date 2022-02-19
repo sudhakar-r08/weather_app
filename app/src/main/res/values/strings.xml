@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Weatherapp</string>
+    <string name="position" translatable="false">position</string>
+    <string name="explore">Show Me</string>
+
+    <string name="today">Today</string>
+    <string name="humidity">Humidity</string>
+    <string name="next_5_days">Next 5 Days</string>
+    <string name="search">Search</string>
+    <string name="start_typing">Start typing for find your location…</string>
+
+    <string name="unexpected_exception" />
+</resources>

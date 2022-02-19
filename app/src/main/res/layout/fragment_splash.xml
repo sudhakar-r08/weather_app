@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sudhakar.app.weatherapp.ui.splash.SplashFragmentViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_bg"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.splash.SplashFragment">
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="100dp">
+
+            <ImageView
+                android:id="@+id/imageViewEllipse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_splash_bg_ellipse" />
+
+            <ImageView
+                android:id="@+id/imageViewBigCloud"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:backgroundTint="@color/cyan"
+                android:layout_centerInParent="true"
+                android:src="@drawable/a02d_svg" />
+        </RelativeLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonExplore"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:paddingStart="60dp"
+            android:paddingEnd="60dp"
+            android:text="@string/explore"
+            android:textAllCaps="true"
+            android:textAppearance="@style/AppTheme"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="24dp" />
+
+    </RelativeLayout>
+</layout>
