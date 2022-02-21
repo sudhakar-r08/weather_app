@@ -23,17 +23,19 @@
         app:cardElevation="@dimen/dimen_8dp"
         tools:visibility="invisible">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rootView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageViewWeatherIcon"
-                android:layout_width="124dp"
-                android:layout_height="124dp"
-                android:layout_marginStart="36dp"
+                android:layout_width="@dimen/dimen_124dp"
+                android:layout_height="@dimen/dimen_124dp"
+                android:layout_marginStart="@dimen/dimen_36dp"
                 android:layout_marginTop="@dimen/dimen_48dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:setWeatherIcon="@{viewState.data.getCurrentWeather().icon}"
                 tools:src="@drawable/a10d_svg" />
 
@@ -41,49 +43,53 @@
                 android:id="@+id/textViewTemperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/dimen_48dp"
-                android:layout_marginEnd="36dp"
+                android:layout_marginEnd="@dimen/dimen_36dp"
                 android:text="@{viewState.data.main.getTempString()}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_100sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="25°" />
 
             <TextView
                 android:id="@+id/textViewWeatherMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewTemperature"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:text="@{viewState.data.getCurrentWeather().main}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_23sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewTemperature"
                 tools:text="@string/sample_weather" />
 
             <TextView
                 android:id="@+id/textViewHumidityHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewWeatherMain"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/humidity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_19sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewWeatherMain" />
 
             <TextView
                 android:id="@+id/textViewHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewHumidityHeader"
-                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/dimen_24dp"
                 android:text="@{viewState.data.main.getHumidityString()}"
                 android:textColor="@color/whiteWithHalfOpacity"
                 android:textSize="@dimen/text_size_27sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewHumidityHeader"
                 tools:text="@string/sample_temprature" />
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>
