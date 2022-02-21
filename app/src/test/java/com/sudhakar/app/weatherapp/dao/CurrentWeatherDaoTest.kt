@@ -10,6 +10,7 @@ import com.sudhakar.app.weatherapp.db.dao.CurrentWeatherDao
 import com.sudhakar.app.weatherapp.util.generateCurrentWeatherEntity
 import com.sudhakar.app.weatherapp.util.getOrAwaitValue
 import com.google.common.truth.Truth
+import com.sudhakar.app.weatherapp.util.state
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -58,7 +59,7 @@ class CurrentWeatherDaoTest {
     @Test
     fun `insert one entity and count must be one`() {
         // When
-        currentWeatherDao.insertCurrentWeather(generateCurrentWeatherEntity("Istanbul", 1))
+        currentWeatherDao.insertCurrentWeather(generateCurrentWeatherEntity(state, 1))
 
         // Then
         val count = currentWeatherDao.getCount()
@@ -68,17 +69,17 @@ class CurrentWeatherDaoTest {
     @Test
     fun `insert one entity and test get function`() {
         // When
-        currentWeatherDao.insertCurrentWeather(generateCurrentWeatherEntity("Istanbul", 1))
+        currentWeatherDao.insertCurrentWeather(generateCurrentWeatherEntity(state, 1))
 
         // Then
         val entity = currentWeatherDao.getCurrentWeather().getOrAwaitValue()
-        Truth.assertThat(entity.name).isEqualTo("Istanbul")
+        Truth.assertThat(entity.name).isEqualTo(state)
     }
 
     @Test
     fun `delete and insert a current weather`() {
         // When
-        currentWeatherDao.deleteAndInsert(generateCurrentWeatherEntity("Istanbul", 1))
+        currentWeatherDao.deleteAndInsert(generateCurrentWeatherEntity(state, 1))
         val count = currentWeatherDao.getCount()
         Truth.assertThat(count).isEqualTo(1)
 
@@ -93,7 +94,7 @@ class CurrentWeatherDaoTest {
     @Test
     fun `first insert a current weather then delete and count must be zero`() {
         // When
-        currentWeatherDao.deleteAndInsert(generateCurrentWeatherEntity("Istanbul", 1))
+        currentWeatherDao.deleteAndInsert(generateCurrentWeatherEntity(state, 1))
         val count = currentWeatherDao.getCount()
         Truth.assertThat(count).isEqualTo(1)
 

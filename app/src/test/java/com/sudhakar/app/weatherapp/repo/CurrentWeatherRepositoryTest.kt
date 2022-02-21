@@ -14,6 +14,7 @@ import com.sudhakar.app.weatherapp.util.generateCurrentWeatherEntity
 import com.sudhakar.app.weatherapp.utils.domain.Resource
 import com.sudhakar.app.weatherapp.utils.domain.Status
 import com.google.common.truth.Truth
+import com.sudhakar.app.weatherapp.util.state
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import io.reactivex.Single
@@ -56,7 +57,7 @@ class CurrentWeatherRepositoryTest {
         val lat = 30.0
         val lon = 34.0
         val currentWeatherLiveData: MutableLiveData<CurrentWeatherEntity> = MutableLiveData()
-        currentWeatherLiveData.postValue(generateCurrentWeatherEntity("Istanbul", 1))
+        currentWeatherLiveData.postValue(generateCurrentWeatherEntity(state, 1))
         val mockedObserver: Observer<Resource<CurrentWeatherEntity>> = mockk(relaxUnitFun = true)
 
         // When
@@ -95,8 +96,8 @@ class CurrentWeatherRepositoryTest {
 
         val currentWeatherEntity = currentWeatherEntitySlots[0]
         Truth.assertThat(currentWeatherEntity.status).isEqualTo(Status.SUCCESS)
-        Truth.assertThat(currentWeatherEntity.data?.name).isEqualTo("Istanbul")
-        Truth.assertThat(currentWeatherEntity.data?.id).isEqualTo(1) // generateCurrentWeatherEntity("Istanbul", 1) returns id as 1
+        Truth.assertThat(currentWeatherEntity.data?.name).isEqualTo(state)
+        Truth.assertThat(currentWeatherEntity.data?.id).isEqualTo(1) // generateCurrentWeatherEntity(state, 1) returns id as 1
     }
 
     @Test
@@ -149,7 +150,7 @@ class CurrentWeatherRepositoryTest {
 
         val currentWeatherEntity = currentWeatherEntitySlots[0]
 
-        Truth.assertThat(currentWeatherEntity.data?.name).isEqualTo("Istanbul")
+        Truth.assertThat(currentWeatherEntity.data?.name).isEqualTo(state)
         // CurrentWeatherEntity(currentWeatherResponse : CurrentWeatherResponse) constructor defines id as 0
         Truth.assertThat(currentWeatherEntity.data?.id).isEqualTo(0)
     }

@@ -14,38 +14,40 @@
         android:id="@+id/rootView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="8dp"
+
+        android:layout_marginStart="@dimen/dimen_24dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_24dp"
+        android:layout_marginBottom="@dimen/dimen_8dp"
         android:backgroundTint="@color/white"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="18dp"
-        app:cardElevation="0dp">
+        app:cardCornerRadius="@dimen/dimen_18dp"
+        app:cardElevation="@dimen/dimen_4dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_4dp">
 
             <TextView
                 android:id="@+id/textViewHourOfDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/dimen_24dp"
                 android:text="@{viewModel.item.getHourOfDay()}"
                 android:textColor="@color/mainTextColor"
                 android:textSize="@dimen/text_size_14sp"
-                tools:text="14:00" />
+                tools:text="@string/sample_time" />
 
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageViewForecastIcon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/dimen_24dp"
+                android:layout_height="@dimen/dimen_24dp"
                 android:layout_below="@id/textViewHourOfDay"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/dimen_24dp"
                 android:tint="@{viewModel.item.getHourColor()}"
                 app:setWeatherIcon="@{viewModel.item.getWeatherItem().icon}"
                 tools:src="@drawable/a10d_svg" />
@@ -56,12 +58,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageViewForecastIcon"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
                 android:text="@{viewModel.item.main.getTempString()}"
                 android:textColor="@color/mainTextColor"
                 android:textSize="@dimen/text_size_19sp"
                 android:textStyle="bold"
-                tools:text="23°" />
+                tools:text="@string/sample_temprature" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

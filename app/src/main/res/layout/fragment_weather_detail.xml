@@ -22,21 +22,21 @@
             android:id="@+id/coordinatorLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="@dimen/dimen_24dp">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabClose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elevation="8dp"
-                android:padding="0dp"
+                android:elevation="@dimen/dimen_8dp"
+                android:padding="@dimen/dimen_0dp"
                 android:backgroundTint="@color/white"
                 android:scaleType="fitXY"
-                app:borderWidth="0dp"
+                app:borderWidth="@dimen/dimen_1dp"
                 app:layout_anchor="@id/cardView"
                 app:layout_anchorGravity="center_horizontal|top"
                 app:srcCompat="@drawable/ic_close"
-                app:maxImageSize="52dp"
+                app:maxImageSize="@dimen/dimen_52dp"
                 app:tint="@null"
                 app:useCompatPadding="true"
                 tools:ignore="ContentDescription" />
@@ -46,11 +46,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="48dp"
-                android:layout_marginBottom="-32dp"
+                android:layout_marginTop="@dimen/dimen_48dp"
+                android:layout_marginBottom="@dimen/dimen_minus_32dp"
                 android:backgroundTint="@color/cyan"
                 android:transitionName="@{String.format(@string/cardView, viewModel.weatherItem.getDay())}"
-                app:cardCornerRadius="24dp"
+                app:cardCornerRadius="@dimen/dimen_24dp"
                 tools:backgroundTint="@color/colorPrimary">
 
                 <androidx.core.widget.NestedScrollView
@@ -62,15 +62,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent">
-//TODO need to come back
+
                         <TextView
                             android:id="@+id/textViewDayOfWeek"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="40dp"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
+                            android:layout_marginTop="@dimen/dimen_40dp"
+                            android:paddingStart="@dimen/dimen_16dp"
+                            android:paddingEnd="@dimen/dimen_16dp"
                             android:gravity="center"
                             android:text="@{viewModel.weatherItem.getDay()}"
                             android:textColor="@color/white"
@@ -80,12 +80,12 @@
 
                         <ImageView
                             android:id="@+id/imageViewForecastIcon"
-                            android:layout_width="160dp"
-                            android:layout_height="160dp"
+                            android:layout_width="@dimen/dimen_160dp"
+                            android:layout_height="@dimen/dimen_160dp"
                             android:layout_below="@id/textViewDayOfWeek"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="12dp"
-                            android:layout_marginBottom="12dp"
+                            android:layout_marginTop="@dimen/dimen_8dp"
+                            android:layout_marginBottom="@dimen/dimen_8dp"
                             android:transitionName="@{String.format(@string/forecastIcon, viewModel.weatherItem.getDay())}"
                             app:setWeatherIcon="@{viewModel.weatherItem.getWeatherItem().icon}"
                             tools:src="@drawable/a10d_svg" />
@@ -108,14 +108,14 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/textViewTemp"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="@dimen/dimen_8dp"
                             android:orientation="horizontal"
                             android:transitionName="@{String.format(@string/tempMaxMin, viewModel.weatherItem.getDay())}">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="12dp"
+                                android:layout_marginEnd="@dimen/dimen_8dp"
                                 android:text="@{viewModel.weatherItem.main.getTempMinString()}"
                                 android:textColor="@color/whiteWithHalfOpacity"
                                 android:textSize="@dimen/text_size_30sp" />
@@ -123,7 +123,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
+                                android:layout_marginStart="@dimen/dimen_8dp"
                                 android:text="@{viewModel.weatherItem.main.getTempMaxString()}"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/text_size_30sp" />
@@ -135,17 +135,17 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/linearLayoutTempMaxMin"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginBottom="64dp"
-                            app:cardCornerRadius="8dp">
+                            android:layout_marginStart="@dimen/dimen_24dp"
+                            android:layout_marginTop="@dimen/dimen_24dp"
+                            android:layout_marginEnd="@dimen/dimen_24dp"
+                            android:layout_marginBottom="@dimen/dimen_64dp"
+                            app:cardCornerRadius="@dimen/dimen_8dp">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recyclerViewHourOfDay"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
+                                android:layout_margin="@dimen/dimen_8dp"
                                 android:orientation="horizontal"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 tools:listitem="@layout/item_weather_hour_of_day" />

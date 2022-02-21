@@ -18,18 +18,18 @@
             android:id="@+id/textViewCityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/dimen_24dp"
             android:textSize="@dimen/text_size_21sp"
-            tools:text="Çukurova, Adana, Turkey"
-            android:layout_marginBottom="4dp"
+            tools:text="Çukurova, Adana, India"
+            android:layout_marginBottom="@dimen/dimen_24dp"
             android:text="@{viewModel.item.getFullName()}"
             android:textColor="@color/mainTextColor" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/dimen_1dp"
             android:layout_below="@id/textViewCityName"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/dimen_8dp"
             android:background="@color/mainTextColor" />
     </RelativeLayout>
 </layout>

@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 
 
+val state  = "Tamilnadu"
+val country = "India"
 
 @VisibleForTesting(otherwise = VisibleForTesting.NONE)
 fun <T> LiveData<T>.getOrAwaitValue(
@@ -62,16 +64,16 @@ fun createSampleForecastResponse(id: Int, cityName: String): ForecastEntity {
         Clouds(1), Sys("a"), Wind(12.0, 12.0)
     )
     val list = listOf(listItem)
-    return ForecastEntity(id, CityEntity("Turkey", CoordEntity(34.0, 30.0), cityName, 34), list)
+    return ForecastEntity(id, CityEntity(country, CoordEntity(34.0, 30.0), cityName, 34), list)
 }
 
 fun createSampleForecastWithCoord(id: Int, cityName: String, lat: Double, lon: Double): ForecastEntity {
     val list = emptyList<ListItem>()
-    return ForecastEntity(id, CityEntity("Turkey", CoordEntity(lon, lat), cityName, 34), list)
+    return ForecastEntity(id, CityEntity(country, CoordEntity(lon, lat), cityName, 34), list)
 }
 
 fun generateCitiesForSearchEntity(id: String, name: String): CitiesForSearchEntity {
-    return CitiesForSearchEntity("Clear", "Turkey", CoordEntity(34.0, 30.0), name, "Beyoglu", 1, id)
+    return CitiesForSearchEntity("Clear", country, CoordEntity(34.0, 30.0), name, "Beyoglu", 1, id)
 }
 
 fun generateCurrentWeatherEntity(name: String, id: Int): CurrentWeatherEntity {
@@ -99,7 +101,7 @@ fun createSampleForecastResponse(): ForecastResponse {
     )
     val list = listOf(listItem)
     return ForecastResponse(
-        City("Turkey", Coord(32.32, 30.30), "Istanbul", 10),
+        City(country, Coord(32.32, 30.30), state, 10),
         null,
         null,
         null,
@@ -115,7 +117,7 @@ fun createSampleCurrentWeatherResponse(): CurrentWeatherResponse {
         Clouds(
             1
         ),
-        Sys("a"), null, Coord(32.32, 30.30), weather, "Istanbul", null, 10, null, null
+        Sys("a"), null, Coord(32.32, 30.30), weather, state, null, 10, null, null
     )
 }
 
@@ -123,11 +125,11 @@ fun generateSampleSearchCitiesResponse(): SearchResponse {
     return SearchResponse(
         listOf(
             HitsItem(
-                "Turkey", null, isCity = true, isCountry = false,
+                country, null, isCity = true, isCountry = false,
                 administrative = listOf(
-                    "İstanbul"
+                    state
                 ),
-                adminLevel = null, postcode = null, county = listOf("Beyoğlu"), geoloc = null, importance = null, objectID = "10", isSuburb = null, localeNames = null
+                adminLevel = null, postcode = null, county = listOf("Chennai"), geoloc = null, importance = null, objectID = "10", isSuburb = null, localeNames = null
             )
         )
     )

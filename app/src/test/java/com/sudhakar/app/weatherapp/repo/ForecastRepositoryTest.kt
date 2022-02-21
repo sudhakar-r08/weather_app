@@ -13,6 +13,7 @@ import com.sudhakar.app.weatherapp.util.createSampleForecastResponse
 import com.sudhakar.app.weatherapp.utils.domain.Resource
 import com.sudhakar.app.weatherapp.utils.domain.Status
 import com.google.common.truth.Truth
+import com.sudhakar.app.weatherapp.util.state
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import io.reactivex.Single
@@ -51,7 +52,7 @@ class ForecastRepositoryTest {
         val lat = 30.0
         val lon = 34.0
         val forecastLiveData: MutableLiveData<ForecastEntity> = MutableLiveData()
-        forecastLiveData.postValue(createSampleForecastResponse(1, "Istanbul"))
+        forecastLiveData.postValue(createSampleForecastResponse(1, state))
         val mockedObserver: Observer<Resource<ForecastEntity>> = mockk(relaxUnitFun = true)
 
         // When
@@ -78,8 +79,8 @@ class ForecastRepositoryTest {
 
         val forecastEntity = forecastEntitySlots[0]
         Truth.assertThat(forecastEntity.status).isEqualTo(Status.SUCCESS)
-        Truth.assertThat(forecastEntity.data?.city?.cityName).isEqualTo("Istanbul")
-        Truth.assertThat(forecastEntity.data?.id).isEqualTo(1) // createSampleForecastResponse(1, "Istanbul") returns id as 1
+        Truth.assertThat(forecastEntity.data?.city?.cityName).isEqualTo(state)
+        Truth.assertThat(forecastEntity.data?.id).isEqualTo(1) // createSampleForecastResponse(1, state) returns id as 1
     }
 
     @Test
@@ -118,7 +119,7 @@ class ForecastRepositoryTest {
 
         val forecastEntity = forecastEntitySlots[0]
 
-        Truth.assertThat(forecastEntity.data?.city?.cityName).isEqualTo("Istanbul")
+        Truth.assertThat(forecastEntity.data?.city?.cityName).isEqualTo(state)
         // ForecastEntity(forecastResponse : ForecastResponse) constructor defines id as 0
         Truth.assertThat(forecastEntity.data?.id).isEqualTo(0)
     }

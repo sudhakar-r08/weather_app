@@ -28,7 +28,6 @@ object Versions {
     const val moshiVersion = "1.12.0"
     const val picassoVersion = "2.71828"
     const val threetenabpVersion = "1.3.1"
-    const val shadowViewVersion = "0.0.3"
     const val algoliaVersion = "3.+"
     const val stethoVersion = "1.6.0"
     const val timberVersion = "4.7.1"
@@ -103,8 +102,7 @@ object Dependencies {
     // picasso
     const val picasso = "com.squareup.picasso:picasso:${Versions.picassoVersion}"
 
-    // shadowView
-    const val shadowView = "com.loopeer.lib:shadow:${Versions.shadowViewVersion}"
+
 
     // threetenabp
     const val threetenabp = "com.jakewharton.threetenabp:threetenabp:${Versions.threetenabpVersion}"

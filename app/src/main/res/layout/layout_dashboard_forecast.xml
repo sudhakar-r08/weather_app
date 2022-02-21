@@ -19,8 +19,8 @@
         android:backgroundTint="@color/mainColor"
         android:fitsSystemWindows="true"
         android:visibility="@{viewState.isLoading() ? View.INVISIBLE : View.VISIBLE}"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
+        app:cardCornerRadius="@dimen/dimen_8dp"
+        app:cardElevation="@dimen/dimen_8dp"
         tools:visibility="invisible">
 
         <RelativeLayout
@@ -33,7 +33,7 @@
                 android:layout_width="124dp"
                 android:layout_height="124dp"
                 android:layout_marginStart="36dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="@dimen/dimen_48dp"
                 app:setWeatherIcon="@{viewState.data.getCurrentWeather().icon}"
                 tools:src="@drawable/a10d_svg" />
 
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="@dimen/dimen_48dp"
                 android:layout_marginEnd="36dp"
                 android:text="@{viewState.data.main.getTempString()}"
                 android:textColor="@color/white"
@@ -55,11 +55,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewTemperature"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
                 android:text="@{viewState.data.getCurrentWeather().main}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_23sp"
-                tools:text="Clouds &amp; Sun" />
+                tools:text="@string/sample_weather" />
 
             <TextView
                 android:id="@+id/textViewHumidityHeader"
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewWeatherMain"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
                 android:text="@string/humidity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_19sp"
@@ -83,7 +83,7 @@
                 android:text="@{viewState.data.main.getHumidityString()}"
                 android:textColor="@color/whiteWithHalfOpacity"
                 android:textSize="@dimen/text_size_27sp"
-                tools:text="35°" />
+                tools:text="@string/sample_temprature" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

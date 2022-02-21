@@ -19,15 +19,15 @@
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:layout_marginEnd="@dimen/dimen_8dp"
+            android:layout_marginBottom="@dimen/dimen_8dp"
             android:backgroundTint="@color/cyan"
             android:clickable="true"
             android:focusable="true"
             android:transitionName="@{String.format(@string/cardView, viewModel.item.getDay())}"
-            app:cardCornerRadius="4dp"
+            app:cardCornerRadius="@dimen/dimen_24dp"
             tools:backgroundTint="@android:color/holo_orange_dark">
 
             <LinearLayout
@@ -36,15 +36,15 @@
                 android:background="@color/cyan"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="@dimen/dimen_8dp">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/dimen_0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
-                    android:paddingLeft="10dp">
+                    android:paddingStart="@dimen/dimen_10dp">
 
                     <TextView
                         android:id="@+id/textViewTimeOfDay"
@@ -95,9 +95,9 @@
                     android:id="@+id/imageViewForecastIcon"
                     android:layout_width="54dp"
                     android:layout_height="54dp"
+                    android:layout_margin="@dimen/dimen_4dp"
                     android:layout_gravity="center_vertical"
                     android:gravity="center"
-                    android:textSize="@dimen/text_size_45sp"
                     android:transitionName="@{String.format(@string/forecastIcon, viewModel.item.getDay())}"
                     app:setWeatherIcon="@{viewModel.item.getWeatherItem().icon}"
                     tools:src="@drawable/ic_splash_big_cloud"
