@@ -27,7 +27,7 @@
             android:clickable="true"
             android:focusable="true"
             android:transitionName="@{String.format(@string/cardView, viewModel.item.getDay())}"
-            app:cardCornerRadius="@dimen/dimen_24dp"
+            app:cardCornerRadius="@dimen/dimen_8dp"
             tools:backgroundTint="@android:color/holo_orange_dark">
 
             <LinearLayout

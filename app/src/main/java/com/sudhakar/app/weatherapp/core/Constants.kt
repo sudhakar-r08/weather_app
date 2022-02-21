@@ -21,4 +21,8 @@ object Constants {
         const val LON = "lon"
         const val METRIC = "metric"
     }
+
+    object DB{
+      const val DB_NAME= "WeatherApp-DB"
+    }
 }

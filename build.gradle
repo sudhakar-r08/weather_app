@@ -1,18 +1,153 @@
-
-
 buildscript {
+    ext {
+        //Config
+        applicationId = "com.sudhakar.app.weatherapp"
+
+        buildToolsVersion = "30.0.2"
+        compileSdkVersion = 31
+        targetSdkVersion = 31
+        minSdkVersion = 24
+        versionCode = 1
+        versionName = "1.0.0"
+
+        //Build Plugins version
+        googleGradleVersion = '4.3.8'
+        buildGradleVersion = '7.1.1'
+        kotlinVersion = '1.6.10'
+        navigationGradleVersion = '2.4.1'
+        hiltVersion = '2.41'
+        klintVersion = '0.41.0'
+
+        // dependency versions
+        supportVersion = '1.2.1'
+        appCompatVersion = '1.4.1'
+        materialDesignVersion = '1.5.0'
+        coreKtxVersion = '1.7.0'
+
+        lifecycleViewModelKtxVersion = '2.5.0-alpha02'
+        lifecycleVersion = '2.5.0-alpha02'
+        roomVersion = '2.4.1'
+        navigationVersion = '2.5.0-alpha02'
+
+        rxJavaVersion = '2.2.21'
+        rxKotlinVersion = '2.4.0'
+        rxAndroidVersion = '2.1.1'
+        rxAnimationsVersion = '2.1.0'
+        retrofitVersion = '2.9.0'
+        okHttpVersion = '5.0.0-alpha.4'
+        moshiConverterVersion = '2.9.0'
+        moshiVersion = '1.13.0'
+        picassoVersion = '2.71828'
+        threetenabpVersion = '1.3.1'
+        algoliaVersion = '3.27.0'
+        stethoVersion = '1.6.0'
+        timberVersion = '5.0.1'
+
+        coreTestingVersion = '2.1.0'
+        mockKVersion = '1.12.2'
+        truthExtVersion = '1.4.0'
+        truthVersion = '1.1.3'
+        androidxTestRunnerVersion = '1.4.0'
+        espressoCoreVersion = '3.4.0'
+        junitVersion = '4.13.2'
+        junitExtVersion = '1.1.3'
+        robolectricVersion = '4.7.3'
+
+
+        //Dependencies
+// kotlin
+        kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+        kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+
+// android support
+
+        appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
+        materialDesign = "com.google.android.material:material:$materialDesignVersion"
+        recyclerView = "androidx.recyclerview:recyclerview:$supportVersion"
+        cardView = "androidx.cardview:cardview:$supportVersion"
+        coreKtx = "androidx.core:core-ktx:$coreKtxVersion"
+
+// lifecycle
+
+        lifecycleAnnotation = "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+        liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+        lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelKtxVersion"
+
+// navigation
+        navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+        navigationUI = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+// room
+        roomRuntime = "androidx.room:room-runtime:$roomVersion"
+        roomCompiler = "androidx.room:room-compiler:$roomVersion"
+
+// hilt
+        hilt = "com.google.dagger:hilt-android:$hiltVersion"
+        hiltKapt = "com.google.dagger:hilt-compiler:$hiltVersion"
+
+// rx
+        rxJava = "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+        rxAndroid = "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+        rxKotlin = "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
+        rxAnimations = "com.mikhaellopez:rxanimation:$rxAnimationsVersion"
+
+// network
+        retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+        okHttp = "com.squareup.okhttp3:okhttp:$okHttpVersion"
+        rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+// moshi
+        moshiConverter = "com.squareup.retrofit2:converter-moshi:$moshiConverterVersion"
+        moshi = "com.squareup.moshi:moshi:$moshiVersion"
+        moshiKotlin = "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+        moshiKapt = "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+// picasso
+        picasso = "com.squareup.picasso:picasso:$picassoVersion"
+
+
+// threetenabp
+        threetenabp = "com.jakewharton.threetenabp:threetenabp:$threetenabpVersion"
+
+// algolia
+        algolia = "com.algolia:algoliasearch-android:$algoliaVersion"
+
+// stetho
+        stethoCore = "com.facebook.stetho:stetho:$stethoVersion"
+        stethoOkHttp = "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+        stethoUrlConnection = "com.facebook.stetho:stetho-urlconnection:$stethoVersion"
+
+// timber
+        timber = "com.jakewharton.timber:timber:$timberVersion"
+
+// test
+        junit = "junit:junit:$junitVersion"
+        androidxTestRunner = "androidx.test:runner:$androidxTestRunnerVersion"
+        androidxTestRules = "androidx.test:rules:$androidxTestRunnerVersion"
+        junitTestExt = "androidx.test.ext:junit-ktx:$junitExtVersion"
+        espressoCore = "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+        truth = "com.google.truth:truth:$truthVersion"
+        truthExt = "androidx.test.ext:truth:$truthExtVersion"
+        mockK = "io.mockk:mockk:$mockKVersion"
+        coreTesting = "androidx.arch.core:core-testing:$coreTestingVersion"
+        robolectric = "org.robolectric:robolectric:$robolectricVersion"
+    }
+
     repositories {
         jcenter()
         mavenCentral()
         google()
     }
     dependencies {
-        classpath BuildPlugins.googleGradle
-        classpath BuildPlugins.buildGradle
-        classpath BuildPlugins.kotlinGradle
-        classpath BuildPlugins.navigationGradle
-        classpath BuildPlugins.hiltGradle
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
+
+        classpath "com.google.gms:google-services:$googleGradleVersion"
+        classpath "com.android.tools.build:gradle:$buildGradleVersion"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationGradleVersion"
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -26,11 +161,7 @@ allprojects {
         maven { url 'https://maven.google.com' }
     }
 
-    afterEvaluate {
-        tasks.withType(JavaCompile.class) {
-            options.compilerArgs << "-Xmaxerrs" << "500"
-        }
-    }
+
 }
 
 task clean(type: Delete) {

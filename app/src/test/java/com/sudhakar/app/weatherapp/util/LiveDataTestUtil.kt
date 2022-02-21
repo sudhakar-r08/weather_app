@@ -10,8 +10,9 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 
 
-val state  = "Tamilnadu"
-val country = "India"
+const val state  = "Tamilnadu"
+const val country = "India"
+const val timeoutException = "LiveData value was never set."
 
 @VisibleForTesting(otherwise = VisibleForTesting.NONE)
 fun <T> LiveData<T>.getOrAwaitValue(
@@ -35,7 +36,7 @@ fun <T> LiveData<T>.getOrAwaitValue(
 
         // Don't wait indefinitely if the LiveData is not set.
         if (!latch.await(time, timeUnit)) {
-            throw TimeoutException("LiveData value was never set.")
+            throw TimeoutException(timeoutException)
         }
     } finally {
         this.removeObserver(observer)

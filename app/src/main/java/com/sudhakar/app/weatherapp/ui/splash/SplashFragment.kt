@@ -10,7 +10,8 @@ import com.sudhakar.app.weatherapp.utils.extensions.hide
 import com.sudhakar.app.weatherapp.utils.extensions.show
 import com.mikhaellopez.rxanimation.*
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<SplashFragmentViewModel, FragmentSplashBinding>(

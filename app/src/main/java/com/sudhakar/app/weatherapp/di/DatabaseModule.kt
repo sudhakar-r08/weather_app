@@ -2,6 +2,7 @@ package com.sudhakar.app.weatherapp.di
 
 import android.content.Context
 import androidx.room.Room
+import com.sudhakar.app.weatherapp.core.Constants.DB.DB_NAME
 import com.sudhakar.app.weatherapp.db.WeatherDatabase
 import com.sudhakar.app.weatherapp.db.dao.CitiesForSearchDao
 import com.sudhakar.app.weatherapp.db.dao.CurrentWeatherDao
@@ -23,7 +24,7 @@ object DatabaseModule {
         Room.databaseBuilder(
             context,
             WeatherDatabase::class.java,
-            "WeatherApp-DB"
+            DB_NAME
         ).build()
 
     @Provides
