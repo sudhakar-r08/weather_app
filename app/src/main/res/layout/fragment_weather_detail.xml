@@ -62,7 +62,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent">
-
+//TODO need to come back
                         <TextView
                             android:id="@+id/textViewDayOfWeek"
                             android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                             android:gravity="center"
                             android:text="@{viewModel.weatherItem.getDay()}"
                             android:textColor="@color/white"
-                            android:textSize="32sp"
+                            android:textSize="@dimen/text_size_32sp"
                             android:textStyle="bold"
                             android:transitionName="@{String.format(@string/dayOfWeek, viewModel.weatherItem.getDay())}" />
 
@@ -98,7 +98,7 @@
                             android:layout_centerHorizontal="true"
                             android:text="@{viewModel.weatherItem.main.getTempString()}"
                             android:textColor="@color/white"
-                            android:textSize="60sp"
+                            android:textSize="@dimen/text_size_60sp"
                             android:textStyle="bold"
                             android:transitionName="@{String.format(@string/temp, viewModel.weatherItem.getDay())}" />
 
@@ -118,7 +118,7 @@
                                 android:layout_marginEnd="12dp"
                                 android:text="@{viewModel.weatherItem.main.getTempMinString()}"
                                 android:textColor="@color/whiteWithHalfOpacity"
-                                android:textSize="30sp" />
+                                android:textSize="@dimen/text_size_30sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -126,7 +126,7 @@
                                 android:layout_marginStart="12dp"
                                 android:text="@{viewModel.weatherItem.main.getTempMaxString()}"
                                 android:textColor="@color/white"
-                                android:textSize="30sp" />
+                                android:textSize="@dimen/text_size_30sp" />
                         </LinearLayout>
 
                         <com.google.android.material.card.MaterialCardView

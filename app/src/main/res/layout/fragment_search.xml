@@ -84,7 +84,7 @@
                     android:textStyle="bold"
                     app:drawableEndCompat="@android:drawable/stat_notify_error"
                     app:setErrorText="@{viewState}"
-                    tools:text="Status code : 500 Internal server error!" />
+                    tools:text="@string/txt_500_error" />
 
             </com.google.android.material.card.MaterialCardView>
         </RelativeLayout>

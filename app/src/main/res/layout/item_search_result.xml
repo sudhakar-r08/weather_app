@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textSize="21sp"
+            android:textSize="@dimen/text_size_21sp"
             tools:text="Çukurova, Adana, Turkey"
             android:layout_marginBottom="4dp"
             android:text="@{viewModel.item.getFullName()}"

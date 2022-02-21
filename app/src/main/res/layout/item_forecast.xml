@@ -54,9 +54,9 @@
                         android:maxLines="1"
                         android:textColor="@color/white"
                         android:text="@{viewModel.item.getDay()}"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/text_size_20sp"
                         android:transitionName="@{String.format(@string/dayOfWeek, viewModel.item.getDay())}"
-                        tools:text="Wed, 31 September" />
+                        tools:text="@string/date_time_sample" />
 
                     <LinearLayout
                         android:id="@+id/linearLayoutTempMaxMin"
@@ -72,8 +72,8 @@
                             android:paddingEnd="?attr/listPreferredItemPaddingRight"
                             android:text="@{viewModel.item.main.getTempMinString()}"
                             android:textColor="@color/white"
-                            android:textSize="14sp"
-                            tools:text="666" />
+                            android:textSize="@dimen/text_size_14sp"
+                            tools:text="@string/temp_sample" />
 
                         <TextView
                             android:id="@+id/forecast.temperature_max"
@@ -84,8 +84,8 @@
                             android:paddingEnd="?attr/listPreferredItemPaddingRight"
                             android:text="@{viewModel.item.main.getTempMaxString()}"
                             android:textColor="@color/white"
-                            android:textSize="14sp"
-                            tools:text="666" />
+                            android:textSize="@dimen/text_size_14sp"
+                            tools:text="@string/temp_sample" />
                     </LinearLayout>
 
 
@@ -97,7 +97,7 @@
                     android:layout_height="54dp"
                     android:layout_gravity="center_vertical"
                     android:gravity="center"
-                    android:textSize="45sp"
+                    android:textSize="@dimen/text_size_45sp"
                     android:transitionName="@{String.format(@string/forecastIcon, viewModel.item.getDay())}"
                     app:setWeatherIcon="@{viewModel.item.getWeatherItem().icon}"
                     tools:src="@drawable/ic_splash_big_cloud"

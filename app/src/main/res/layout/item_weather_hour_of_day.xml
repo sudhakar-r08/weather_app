@@ -35,7 +35,7 @@
                 android:layout_marginTop="4dp"
                 android:text="@{viewModel.item.getHourOfDay()}"
                 android:textColor="@color/mainTextColor"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_14sp"
                 tools:text="14:00" />
 
 
@@ -59,7 +59,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@{viewModel.item.main.getTempString()}"
                 android:textColor="@color/mainTextColor"
-                android:textSize="19sp"
+                android:textSize="@dimen/text_size_19sp"
                 android:textStyle="bold"
                 tools:text="23°" />
         </RelativeLayout>

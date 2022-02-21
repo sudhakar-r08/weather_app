@@ -29,11 +29,11 @@
                     android:id="@+id/textViewToolbarTitle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginEnd="@dimen/dimen_24dp"
                     android:gravity="center"
                     android:text="@{viewModel.toolbarTitle}"
                     android:textColor="@color/mainTextColor"
-                    android:textSize="19sp"
+                    android:textSize="@dimen/text_size_19sp"
                     android:textStyle="bold" />
 
             </androidx.appcompat.widget.Toolbar>
@@ -49,15 +49,5 @@
                 app:navGraph="@navigation/mobile_navigation" />
 
         </RelativeLayout>
-
-
-<!--        <com.google.android.material.navigation.NavigationView-->
-<!--            android:id="@+id/navigationView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_gravity="start"-->
-<!--            app:headerLayout="@layout/header_layout"-->
-<!--            app:menu="@menu/drawer_menu" />-->
-
 
 </layout>

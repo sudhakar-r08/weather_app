@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.sudhakar.app.weatherapp.ui.dashboard.DashboardFragmentViewModel" />
@@ -70,7 +71,7 @@
                     android:layout_marginStart="16dp"
                     android:text="@string/next_5_days"
                     android:textColor="@color/mainTextColor"
-                    android:textSize="19sp"
+                    android:textSize="@dimen/text_size_19sp"
                     android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -110,7 +111,7 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 app:setErrorText="@{viewState}"
-                tools:text="Status code : 500 Internal server error!" />
+                tools:text="@string/txt_500_error" />
 
         </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>

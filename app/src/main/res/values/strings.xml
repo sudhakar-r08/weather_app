@@ -10,4 +10,7 @@
     <string name="start_typing">Start typing for find your location…</string>
 
     <string name="unexpected_exception" />
+    <string name="txt_500_error">Status code : 500 Internal server error!</string>
+    <string name="date_time_sample">Wed, 31 September</string>
+    <string name="temp_sample">666</string>
 </resources>
