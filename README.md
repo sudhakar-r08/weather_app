@@ -1,2 +1,2 @@
 # Weather Application
-Sample Weather app
+Simple weather app used to check weather with 5days forecast
