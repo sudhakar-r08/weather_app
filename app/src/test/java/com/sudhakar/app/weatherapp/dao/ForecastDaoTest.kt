@@ -7,8 +7,10 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.sudhakar.app.weatherapp.db.WeatherDatabase
 import com.sudhakar.app.weatherapp.db.dao.ForecastDao
+import com.sudhakar.app.weatherapp.util.createSampleForecastResponse
+import com.sudhakar.app.weatherapp.util.createSampleForecastWithCoord
+import com.sudhakar.app.weatherapp.util.getOrAwaitValue
 import com.google.common.truth.Truth
-import com.sudhakar.app.weatherapp.util.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -49,18 +51,18 @@ class ForecastDaoTest {
     @Test
     fun `insert a forecast to forecast dao`() {
         // When
-        forecastDao.insertForecast(createSampleForecastResponse(3, state))
+        forecastDao.insertForecast(createSampleForecastResponse(3, "Istanbul"))
 
         // Then
         val value = forecastDao.getForecast().getOrAwaitValue()
-        Truth.assertThat(value.city?.cityCountry).isEqualTo(country)
-        Truth.assertThat(value.city?.cityName).isEqualTo(state)
+        Truth.assertThat(value.city?.cityCountry).isEqualTo("Turkey")
+        Truth.assertThat(value.city?.cityName).isEqualTo("Istanbul")
     }
 
     @Test
     fun `insert two forecast to forecast dao and then delete all after this operations count must be 0`() {
         // When
-        forecastDao.insertForecast(createSampleForecastResponse(3, state))
+        forecastDao.insertForecast(createSampleForecastResponse(3, "Istanbul"))
         forecastDao.insertForecast(createSampleForecastResponse(4, "Ankara"))
 
         val value = forecastDao.getCount()
@@ -75,9 +77,9 @@ class ForecastDaoTest {
     @Test
     fun `insert a forecast and then update`() {
         // When
-        forecastDao.insertForecast(createSampleForecastResponse(1, state))
+        forecastDao.insertForecast(createSampleForecastResponse(1, "Istanbul"))
         val value = forecastDao.getForecast().getOrAwaitValue()
-        Truth.assertThat(value.city?.cityName).isEqualTo(state)
+        Truth.assertThat(value.city?.cityName).isEqualTo("Istanbul")
 
         // Then
         forecastDao.updateForecast(createSampleForecastResponse(1, "Ankara"))
@@ -88,7 +90,7 @@ class ForecastDaoTest {
     @Test
     fun `delete and insert a forecast`() {
         // When
-        forecastDao.insertForecast(createSampleForecastResponse(1, state))
+        forecastDao.insertForecast(createSampleForecastResponse(1, "Istanbul"))
         val count = forecastDao.getCount()
         Truth.assertThat(count).isEqualTo(1)
 

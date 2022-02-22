@@ -61,6 +61,6 @@ class WeatherDetailViewModelTest {
 
         // Then
         val result = weatherDetailViewModel.getForecast().getOrAwaitValue()
-        Truth.assertThat(result.city?.cityName).isEqualTo(state)
+        Truth.assertThat(result.city?.cityName).isEqualTo("Istanbul")
     }
 }
