@@ -7,6 +7,7 @@ import androidx.lifecycle.switchMap
 import com.sudhakar.app.weatherapp.core.BaseViewModel
 import com.sudhakar.app.weatherapp.domain.usecase.CurrentWeatherUseCase
 import com.sudhakar.app.weatherapp.domain.usecase.ForecastUseCase
+import com.sudhakar.app.weatherapp.repo.UserPreferencesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -15,7 +16,7 @@ import javax.inject.Inject
 class DashboardFragmentViewModel @Inject internal constructor(
     private val forecastUseCase: ForecastUseCase,
     private val currentWeatherUseCase: CurrentWeatherUseCase,
-    var sharedPreferences: SharedPreferences
+     val sharedPreferences: UserPreferencesRepository
 ) : BaseViewModel() {
 
     private val _forecastParams: MutableLiveData<ForecastUseCase.ForecastParams> = MutableLiveData()

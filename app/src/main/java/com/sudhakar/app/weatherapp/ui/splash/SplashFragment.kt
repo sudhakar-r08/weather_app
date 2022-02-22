@@ -23,7 +23,7 @@ class SplashFragment : BaseFragment<SplashFragmentViewModel, FragmentSplashBindi
     override fun init() {
         super.init()
 
-        if (binding.viewModel?.sharedPreferences?.getString(Constants.Coords.LON, "")
+        if (binding.viewModel?.sharedPreferences?.getString(Constants.Coords.LON)
                 .isNullOrEmpty()
         ) {
             binding.buttonExplore.show()

@@ -31,8 +31,8 @@ class DashboardFragment : BaseFragment<DashboardFragmentViewModel, FragmentDashb
             android.R.transition.move
         )
 
-        val lat: String? = binding.viewModel?.sharedPreferences?.getString(Constants.Coords.LAT, "")
-        val lon: String? = binding.viewModel?.sharedPreferences?.getString(Constants.Coords.LON, "")
+        val lat: String? = binding.viewModel?.sharedPreferences?.getString(Constants.Coords.LAT)
+        val lon: String? = binding.viewModel?.sharedPreferences?.getString(Constants.Coords.LON)
 
         if (lat?.isNotEmpty() == true && lon?.isNotEmpty() == true) {
             binding.viewModel?.setCurrentWeatherParams(

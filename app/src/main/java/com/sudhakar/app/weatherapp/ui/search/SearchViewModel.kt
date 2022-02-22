@@ -8,6 +8,7 @@ import com.sudhakar.app.weatherapp.core.BaseViewModel
 import com.sudhakar.app.weatherapp.core.Constants
 import com.sudhakar.app.weatherapp.db.entity.CoordEntity
 import com.sudhakar.app.weatherapp.domain.usecase.SearchCitiesUseCase
+import com.sudhakar.app.weatherapp.repo.UserPreferencesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject internal constructor(
     private val useCase: SearchCitiesUseCase,
-    private val pref: SharedPreferences
+    private val pref: UserPreferencesRepository
 ) : BaseViewModel() {
 
     private val _searchParams: MutableLiveData<SearchCitiesUseCase.SearchCitiesParams> = MutableLiveData()
@@ -35,10 +36,10 @@ class SearchViewModel @Inject internal constructor(
         _searchParams.postValue(params)
     }
 
-    fun saveCoordsToSharedPref(coordEntity: CoordEntity): Single<String>? {
+    fun saveCoordsToSharedPref(coordEntity: CoordEntity): Single<String> {
         return Single.create<String> {
-            pref.edit().putString(Constants.Coords.LAT, coordEntity.lat.toString()).apply()
-            pref.edit().putString(Constants.Coords.LON, coordEntity.lon.toString()).apply()
+            pref.putString(Constants.Coords.LAT, coordEntity.lat.toString())
+            pref.putString(Constants.Coords.LON, coordEntity.lon.toString())
             it.onSuccess("")
         }
             .observeOn(AndroidSchedulers.mainThread())
