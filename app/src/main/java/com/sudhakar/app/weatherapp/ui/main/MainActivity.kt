@@ -61,11 +61,7 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(
         )
 
         val navController = findNavController(R.id.container_fragment)
-//        binding.toolbar.overflowIcon = getDrawable(R.drawable.ic_menu)
-//        binding.toolbar.navigationIcon?.setTint(Color.parseColor("#130e51"))
         setupWithNavController(binding.toolbar, navController, appBarConfig)
-//        setupWithNavController(binding.navigationView, navController)
-//        binding.navigationView.setNavigationItemSelectedListener(this)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.splashFragment -> {
@@ -73,7 +69,6 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(
                 }
                 R.id.dashboardFragment -> {
                     binding.toolbar.show()
-//                    binding.toolbar.setNavigationIcon(R.drawable.ic_menu)
                 }
                 R.id.searchFragment -> {
                     binding.toolbar.hide()
@@ -98,17 +93,4 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(
         )
     }
 
-//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            android.R.id.home ->
-//                binding.drawerLayout.openDrawer(GravityCompat.START)
-//            R.id.aboutApp -> {
-//                binding.drawerLayout.closeDrawer(GravityCompat.START)
-//                findNavController(R.id.container_fragment).navigate(R.id.githubDialog)
-//            }
-//        }
-//        return item.onNavDestinationSelected(findNavController(R.id.container_fragment)) || super.onOptionsItemSelected(
-//            item
-//        )
-//    }
 }

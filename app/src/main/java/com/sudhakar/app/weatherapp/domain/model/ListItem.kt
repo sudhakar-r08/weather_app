@@ -46,15 +46,11 @@ data class ListItem(
     }
 
     fun getDay(): String? {
-//        return dt?.let { getDateTime(it)?.getDisplayName(TextStyle.FULL, Locale.getDefault()) }
-        val format = SimpleDateFormat("EEEE, dd MMMM, yyyy", Locale.getDefault())
-        val formattedDate = format.format(dt?.times(1000) ?: 0)
-        return formattedDate
+
+        val format = SimpleDateFormat("EEE, dd MMM, yyyy", Locale.getDefault())
+        return format.format(dt?.times(1000) ?: 0)
     }
 
-//    fun getDay(): String? {
-//        return dt?.let { getDateTime(it)?.getDisplayName(TextStyle.FULL, Locale.getDefault()) }
-//    }
 
     private fun getDateTime(s: Long): DayOfWeek? {
         return try {

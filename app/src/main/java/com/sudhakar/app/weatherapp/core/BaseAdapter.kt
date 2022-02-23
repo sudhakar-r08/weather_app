@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.sudhakar.app.weatherapp.R
 
-
 abstract class BaseAdapter<T>(callback: DiffUtil.ItemCallback<T>) :
     ListAdapter<T, BaseViewHolder<ViewDataBinding>>(
         callback

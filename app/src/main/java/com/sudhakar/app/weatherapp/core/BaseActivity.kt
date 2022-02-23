@@ -8,7 +8,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.ViewModelProvider
 
-
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(
     @LayoutRes private val layoutResId: Int,
     viewModelClass: Class<VM>
