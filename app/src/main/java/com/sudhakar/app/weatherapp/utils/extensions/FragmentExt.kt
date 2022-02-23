@@ -3,7 +3,10 @@ package com.sudhakar.app.weatherapp.utils.extensions
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
-fun androidx.fragment.app.Fragment.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) = activity?.toast(
+fun androidx.fragment.app.Fragment.toast(
+    message: CharSequence,
+    duration: Int = Toast.LENGTH_SHORT
+) = activity?.toast(
     message,
     duration
 )

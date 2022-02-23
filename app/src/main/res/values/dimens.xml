@@ -14,7 +14,6 @@
     <dimen name="text_size_60sp">60sp</dimen>
     <dimen name="text_size_100sp">100sp</dimen>
 
-
     <dimen name="dimen_0dp">0dp</dimen>
     <dimen name="dimen_1dp">1dp</dimen>
     <dimen name="dimen_2dp">2dp</dimen>
@@ -35,8 +34,5 @@
     <dimen name="dimen_160dp">160dp</dimen>
     <dimen name="dimen_200dp">200dp</dimen>
     <dimen name="dimen_minus_32dp">-32dp</dimen>
-
-
-
 
 </resources>

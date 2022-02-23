@@ -6,7 +6,6 @@ import com.sudhakar.app.weatherapp.domain.model.ListItem
 import javax.inject.Inject
 
 
-
 class WeatherHourOfDayItemViewModel @Inject internal constructor() : BaseViewModel() {
     var item = ObservableField<ListItem>()
 }

@@ -43,9 +43,9 @@ data class CitiesForSearchEntity(
     fun getFullName(): SpannableString {
         return spannable {
             bold(name ?: "").plus(", ") +
-                bold(county ?: "").plus(", ") +
-                italic(administrative ?: "").plus(", ") +
-                italic(country ?: "")
+                    bold(county ?: "").plus(", ") +
+                    italic(administrative ?: "").plus(", ") +
+                    italic(country ?: "")
         }
     }
 }

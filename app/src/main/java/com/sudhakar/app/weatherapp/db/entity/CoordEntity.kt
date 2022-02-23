@@ -9,7 +9,6 @@ import com.sudhakar.app.weatherapp.domain.model.Geoloc
 import kotlinx.parcelize.Parcelize
 
 
-
 @Parcelize
 @Entity(tableName = "Coord")
 data class CoordEntity(

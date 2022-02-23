@@ -5,7 +5,6 @@ import androidx.room.*
 import com.sudhakar.app.weatherapp.db.entity.CurrentWeatherEntity
 
 
-
 @Dao
 interface CurrentWeatherDao {
 

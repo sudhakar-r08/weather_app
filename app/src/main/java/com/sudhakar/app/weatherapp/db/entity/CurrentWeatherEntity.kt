@@ -5,12 +5,11 @@ import android.os.Parcelable
 import androidx.room.*
 import com.sudhakar.app.weatherapp.domain.model.CurrentWeatherResponse
 import com.sudhakar.app.weatherapp.domain.model.WeatherItem
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlinx.parcelize.Parcelize
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.LocalDate
-
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 @Parcelize

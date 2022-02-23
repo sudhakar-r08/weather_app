@@ -7,7 +7,6 @@ import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.LocalDate
-import org.threeten.bp.format.TextStyle
 import java.text.SimpleDateFormat
 import java.util.*
 

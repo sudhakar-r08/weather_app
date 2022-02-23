@@ -27,19 +27,22 @@ class CurrentWeatherRepository @Inject constructor(
         units: String
     ): LiveData<Resource<CurrentWeatherEntity>> {
         return object : NetworkBoundResource<CurrentWeatherEntity, CurrentWeatherResponse>() {
-            override fun saveCallResult(item: CurrentWeatherResponse) = currentWeatherLocalDataSource.insertCurrentWeather(
-                item
-            )
+            override fun saveCallResult(item: CurrentWeatherResponse) =
+                currentWeatherLocalDataSource.insertCurrentWeather(
+                    item
+                )
 
             override fun shouldFetch(data: CurrentWeatherEntity?): Boolean = fetchRequired
 
-            override fun loadFromDb(): LiveData<CurrentWeatherEntity> = currentWeatherLocalDataSource.getCurrentWeather()
+            override fun loadFromDb(): LiveData<CurrentWeatherEntity> =
+                currentWeatherLocalDataSource.getCurrentWeather()
 
-            override fun createCall(): Single<CurrentWeatherResponse> = currentWeatherRemoteDataSource.getCurrentWeatherByGeoCords(
-                lat,
-                lon,
-                units
-            )
+            override fun createCall(): Single<CurrentWeatherResponse> =
+                currentWeatherRemoteDataSource.getCurrentWeatherByGeoCords(
+                    lat,
+                    lon,
+                    units
+                )
 
             override fun onFetchFailed() = currentWeatherRateLimit.reset(RATE_LIMITER_TYPE)
         }.asLiveData

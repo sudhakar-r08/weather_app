@@ -2,13 +2,13 @@ package com.sudhakar.app.weatherapp.ui.splash
 
 import android.graphics.Color
 import androidx.navigation.fragment.findNavController
+import com.mikhaellopez.rxanimation.*
 import com.sudhakar.app.weatherapp.R
 import com.sudhakar.app.weatherapp.core.BaseFragment
 import com.sudhakar.app.weatherapp.core.Constants
 import com.sudhakar.app.weatherapp.databinding.FragmentSplashBinding
 import com.sudhakar.app.weatherapp.utils.extensions.hide
 import com.sudhakar.app.weatherapp.utils.extensions.show
-import com.mikhaellopez.rxanimation.*
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 

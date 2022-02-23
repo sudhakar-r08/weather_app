@@ -12,8 +12,8 @@ import com.sudhakar.app.weatherapp.utils.domain.Resource
 import javax.inject.Inject
 
 
-
-class ForecastUseCase @Inject internal constructor(private val repository: ForecastRepository) : UseCaseLiveData<ForecastViewState, ForecastUseCase.ForecastParams, ForecastRepository>() {
+class ForecastUseCase @Inject internal constructor(private val repository: ForecastRepository) :
+    UseCaseLiveData<ForecastViewState, ForecastUseCase.ForecastParams, ForecastRepository>() {
 
     override fun getRepository(): ForecastRepository {
         return repository

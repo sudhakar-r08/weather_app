@@ -7,7 +7,6 @@ import com.sudhakar.app.weatherapp.domain.model.ListItem
 import kotlinx.parcelize.Parcelize
 
 
-
 @Parcelize
 @Entity(tableName = "Forecast")
 data class ForecastEntity(

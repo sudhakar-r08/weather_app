@@ -1,7 +1,6 @@
 package com.sudhakar.app.weatherapp.core
 
 
-
 object Constants {
 
     object NetworkService {
@@ -22,7 +21,7 @@ object Constants {
         const val METRIC = "metric"
     }
 
-    object DB{
-      const val DB_NAME= "WeatherApp-DB"
+    object DB {
+        const val DB_NAME = "WeatherApp-DB"
     }
 }

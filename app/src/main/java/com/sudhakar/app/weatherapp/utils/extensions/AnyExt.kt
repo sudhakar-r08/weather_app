@@ -36,9 +36,9 @@ fun Any.tryCatch(
 fun spannable(func: () -> SpannableString) = func()
 
 private fun span(s: CharSequence, o: Any) = (
-    if (s is String) SpannableString(s) else s as? SpannableString
-        ?: SpannableString("")
-    ).apply { setSpan(o, 0, length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE) }
+        if (s is String) SpannableString(s) else s as? SpannableString
+            ?: SpannableString("")
+        ).apply { setSpan(o, 0, length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE) }
 
 operator fun SpannableString.plus(s: SpannableString) = SpannableString(TextUtils.concat(this, s))
 

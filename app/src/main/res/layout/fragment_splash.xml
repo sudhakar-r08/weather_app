@@ -36,8 +36,8 @@
                 android:id="@+id/imageViewBigCloud"
                 android:layout_width="@dimen/dimen_200dp"
                 android:layout_height="@dimen/dimen_200dp"
-                android:backgroundTint="@color/cyan"
                 android:layout_centerInParent="true"
+                android:backgroundTint="@color/cyan"
                 android:src="@drawable/a02d_svg" />
         </RelativeLayout>
 

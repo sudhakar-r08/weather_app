@@ -1,11 +1,10 @@
 package com.sudhakar.app.weatherapp.domain
 
 import com.sudhakar.app.weatherapp.core.Constants
-import javax.inject.Inject
-import javax.inject.Singleton
 import okhttp3.Interceptor
 import okhttp3.Response
-
+import javax.inject.Inject
+import javax.inject.Singleton
 
 
 @Singleton

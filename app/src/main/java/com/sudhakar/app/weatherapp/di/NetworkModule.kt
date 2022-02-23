@@ -3,10 +3,10 @@ package com.sudhakar.app.weatherapp.di
 import android.os.Environment
 import com.algolia.search.saas.places.PlacesClient
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.squareup.moshi.Moshi
 import com.sudhakar.app.weatherapp.core.Constants
 import com.sudhakar.app.weatherapp.domain.DefaultRequestInterceptor
 import com.sudhakar.app.weatherapp.domain.WeatherAppAPI
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +17,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Named
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)

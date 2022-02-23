@@ -6,18 +6,15 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
-import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import androidx.navigation.ui.onNavDestinationSelected
 import com.sudhakar.app.weatherapp.R
 import com.sudhakar.app.weatherapp.core.BaseActivity
 import com.sudhakar.app.weatherapp.databinding.ActivityMainBinding
 import com.sudhakar.app.weatherapp.utils.extensions.hide
 import com.sudhakar.app.weatherapp.utils.extensions.show
-import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -6,7 +6,6 @@ import com.sudhakar.app.weatherapp.domain.model.ForecastResponse
 import javax.inject.Inject
 
 
-
 class ForecastLocalDataSource @Inject constructor(private val forecastDao: ForecastDao) {
 
     fun getForecast() = forecastDao.getForecast()

@@ -1,6 +1,5 @@
 package com.sudhakar.app.weatherapp.ui.search
 
-import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
@@ -22,7 +21,9 @@ class SearchViewModel @Inject internal constructor(
     private val pref: UserPreferencesRepository
 ) : BaseViewModel() {
 
-    private val _searchParams: MutableLiveData<SearchCitiesUseCase.SearchCitiesParams> = MutableLiveData()
+    private val _searchParams: MutableLiveData<SearchCitiesUseCase.SearchCitiesParams> =
+        MutableLiveData()
+
     fun getSearchViewState() = searchViewState
 
     private val searchViewState: LiveData<SearchViewState> = _searchParams.switchMap { params ->

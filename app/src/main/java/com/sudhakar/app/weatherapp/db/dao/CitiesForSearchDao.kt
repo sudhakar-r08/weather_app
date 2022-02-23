@@ -8,7 +8,6 @@ import androidx.room.Query
 import com.sudhakar.app.weatherapp.db.entity.CitiesForSearchEntity
 
 
-
 @Dao
 interface CitiesForSearchDao {
 

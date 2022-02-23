@@ -6,11 +6,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.common.truth.Truth
 import com.sudhakar.app.weatherapp.domain.usecase.SearchCitiesUseCase
+import com.sudhakar.app.weatherapp.repo.UserPreferencesRepository
 import com.sudhakar.app.weatherapp.ui.search.SearchViewModel
 import com.sudhakar.app.weatherapp.ui.search.SearchViewState
 import com.sudhakar.app.weatherapp.utils.domain.Status
-import com.google.common.truth.Truth
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -35,7 +36,7 @@ class SearchViewModelTest {
     lateinit var searchCitiesUseCase: SearchCitiesUseCase
 
     @MockK
-    lateinit var sharedPreferences: SharedPreferences
+    lateinit var sharedPreferences: UserPreferencesRepository
 
     private lateinit var searchViewModel: SearchViewModel
 

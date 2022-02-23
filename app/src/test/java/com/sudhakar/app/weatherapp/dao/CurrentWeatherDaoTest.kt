@@ -5,11 +5,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.common.truth.Truth
 import com.sudhakar.app.weatherapp.db.WeatherDatabase
 import com.sudhakar.app.weatherapp.db.dao.CurrentWeatherDao
 import com.sudhakar.app.weatherapp.util.generateCurrentWeatherEntity
 import com.sudhakar.app.weatherapp.util.getOrAwaitValue
-import com.google.common.truth.Truth
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule

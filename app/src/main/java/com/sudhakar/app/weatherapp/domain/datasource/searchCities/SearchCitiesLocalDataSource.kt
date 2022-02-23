@@ -11,9 +11,10 @@ class SearchCitiesLocalDataSource @Inject constructor(
     private val citiesForSearchDao: CitiesForSearchDao
 ) {
 
-    fun getCityByName(cityName: String?): LiveData<List<CitiesForSearchEntity>> = citiesForSearchDao.getCityByName(
-        cityName
-    )
+    fun getCityByName(cityName: String?): LiveData<List<CitiesForSearchEntity>> =
+        citiesForSearchDao.getCityByName(
+            cityName
+        )
 
     fun insertCities(response: SearchResponse) {
         response.hits

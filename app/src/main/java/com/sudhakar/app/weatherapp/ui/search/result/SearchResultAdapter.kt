@@ -9,9 +9,10 @@ import com.sudhakar.app.weatherapp.databinding.ItemSearchResultBinding
 import com.sudhakar.app.weatherapp.db.entity.CitiesForSearchEntity
 
 
-class SearchResultAdapter(private val callBack: (CitiesForSearchEntity) -> Unit) : BaseAdapter<CitiesForSearchEntity>(
-    diffCallback
-) {
+class SearchResultAdapter(private val callBack: (CitiesForSearchEntity) -> Unit) :
+    BaseAdapter<CitiesForSearchEntity>(
+        diffCallback
+    ) {
 
     override fun createBinding(parent: ViewGroup, viewType: Int): ViewDataBinding {
         val mBinding = ItemSearchResultBinding.inflate(
@@ -37,9 +38,15 @@ class SearchResultAdapter(private val callBack: (CitiesForSearchEntity) -> Unit)
 }
 
 val diffCallback = object : DiffUtil.ItemCallback<CitiesForSearchEntity>() {
-    override fun areContentsTheSame(oldItem: CitiesForSearchEntity, newItem: CitiesForSearchEntity): Boolean =
+    override fun areContentsTheSame(
+        oldItem: CitiesForSearchEntity,
+        newItem: CitiesForSearchEntity
+    ): Boolean =
         oldItem == newItem
 
-    override fun areItemsTheSame(oldItem: CitiesForSearchEntity, newItem: CitiesForSearchEntity): Boolean =
+    override fun areItemsTheSame(
+        oldItem: CitiesForSearchEntity,
+        newItem: CitiesForSearchEntity
+    ): Boolean =
         oldItem.name == newItem.name
 }

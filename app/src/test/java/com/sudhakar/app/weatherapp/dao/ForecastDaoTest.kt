@@ -5,19 +5,18 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.common.truth.Truth
 import com.sudhakar.app.weatherapp.db.WeatherDatabase
 import com.sudhakar.app.weatherapp.db.dao.ForecastDao
 import com.sudhakar.app.weatherapp.util.createSampleForecastResponse
 import com.sudhakar.app.weatherapp.util.createSampleForecastWithCoord
 import com.sudhakar.app.weatherapp.util.getOrAwaitValue
-import com.google.common.truth.Truth
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.annotation.Config
-
 
 
 @Config(sdk = [Build.VERSION_CODES.P])

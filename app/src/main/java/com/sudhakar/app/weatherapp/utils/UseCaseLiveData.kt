@@ -3,7 +3,6 @@ package com.sudhakar.app.weatherapp.utils
 import androidx.lifecycle.LiveData
 
 
-
 abstract class UseCaseLiveData<M, P, R> {
 
     abstract fun getRepository(): R

@@ -12,7 +12,8 @@ class CurrentWeatherLocalDataSource @Inject constructor(
 
     fun getCurrentWeather() = currentWeatherDao.getCurrentWeather()
 
-    fun insertCurrentWeather(currentWeather: CurrentWeatherResponse) = currentWeatherDao.deleteAndInsert(
-        CurrentWeatherEntity(currentWeather)
-    )
+    fun insertCurrentWeather(currentWeather: CurrentWeatherResponse) =
+        currentWeatherDao.deleteAndInsert(
+            CurrentWeatherEntity(currentWeather)
+        )
 }

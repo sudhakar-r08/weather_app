@@ -3,7 +3,6 @@ package com.sudhakar.app.weatherapp.domain.model
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import java.util.*
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

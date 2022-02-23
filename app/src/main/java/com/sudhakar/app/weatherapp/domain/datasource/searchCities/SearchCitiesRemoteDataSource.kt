@@ -2,12 +2,12 @@ package com.sudhakar.app.weatherapp.domain.datasource.searchCities
 
 import com.algolia.search.saas.places.PlacesClient
 import com.algolia.search.saas.places.PlacesQuery
+import com.squareup.moshi.Moshi
 import com.sudhakar.app.weatherapp.domain.model.SearchResponse
 import com.sudhakar.app.weatherapp.utils.extensions.tryCatch
-import com.squareup.moshi.Moshi
 import io.reactivex.Single
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 
 class SearchCitiesRemoteDataSource @Inject constructor(

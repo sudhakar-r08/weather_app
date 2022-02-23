@@ -81,7 +81,13 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                     }
 
                     override fun onComplete() {
-                        result.addSource(loadFromDb()) { newData -> result.setValue(Resource.success(newData)) }
+                        result.addSource(loadFromDb()) { newData ->
+                            result.setValue(
+                                Resource.success(
+                                    newData
+                                )
+                            )
+                        }
                         mDisposable!!.dispose()
                     }
 

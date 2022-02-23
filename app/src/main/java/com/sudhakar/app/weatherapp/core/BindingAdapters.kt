@@ -5,11 +5,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import com.squareup.picasso.Picasso
 import com.sudhakar.app.weatherapp.R
 import com.sudhakar.app.weatherapp.utils.extensions.hide
 import com.sudhakar.app.weatherapp.utils.extensions.show
-import com.squareup.picasso.Picasso
-
 
 
 @BindingAdapter("app:visibility")

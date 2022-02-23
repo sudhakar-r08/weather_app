@@ -5,6 +5,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.common.truth.Truth
 import com.sudhakar.app.weatherapp.core.Constants
 import com.sudhakar.app.weatherapp.db.entity.ForecastEntity
 import com.sudhakar.app.weatherapp.domain.datasource.forecast.ForecastLocalDataSource
@@ -12,7 +13,6 @@ import com.sudhakar.app.weatherapp.domain.datasource.forecast.ForecastRemoteData
 import com.sudhakar.app.weatherapp.util.createSampleForecastResponse
 import com.sudhakar.app.weatherapp.utils.domain.Resource
 import com.sudhakar.app.weatherapp.utils.domain.Status
-import com.google.common.truth.Truth
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import io.reactivex.Single
@@ -56,8 +56,14 @@ class ForecastRepositoryTest {
 
         // When
         every { forecastLocalDataSource.getForecast() } returns forecastLiveData
-        every { forecastRemoteDataSource.getForecastByGeoCords(lat, lon, Constants.Coords.METRIC) } returns
-            Single.just(createSampleForecastResponse())
+        every {
+            forecastRemoteDataSource.getForecastByGeoCords(
+                lat,
+                lon,
+                Constants.Coords.METRIC
+            )
+        } returns
+                Single.just(createSampleForecastResponse())
 
         forecastRepository
             .loadForecastByCoord(lat, lon, fetchRequired, Constants.Coords.METRIC)
@@ -68,7 +74,13 @@ class ForecastRepositoryTest {
          */
 
         // Make sure network wasn't called
-        verify { forecastRemoteDataSource.getForecastByGeoCords(lat, lon, Constants.Coords.METRIC) wasNot called }
+        verify {
+            forecastRemoteDataSource.getForecastByGeoCords(
+                lat,
+                lon,
+                Constants.Coords.METRIC
+            ) wasNot called
+        }
         // Make sure db called
         verify { forecastLocalDataSource.getForecast() }
 
@@ -79,7 +91,8 @@ class ForecastRepositoryTest {
         val forecastEntity = forecastEntitySlots[0]
         Truth.assertThat(forecastEntity.status).isEqualTo(Status.SUCCESS)
         Truth.assertThat(forecastEntity.data?.city?.cityName).isEqualTo("Istanbul")
-        Truth.assertThat(forecastEntity.data?.id).isEqualTo(1) // createSampleForecastResponse(1, "Istanbul") returns id as 1
+        Truth.assertThat(forecastEntity.data?.id)
+            .isEqualTo(1) // createSampleForecastResponse(1, "Istanbul") returns id as 1
     }
 
     @Test
@@ -93,7 +106,13 @@ class ForecastRepositoryTest {
         val mockedObserver: Observer<Resource<ForecastEntity>> = mockk(relaxUnitFun = true)
 
         // When
-        every { forecastRemoteDataSource.getForecastByGeoCords(lat, lon, Constants.Coords.METRIC) } returns Single.just(
+        every {
+            forecastRemoteDataSource.getForecastByGeoCords(
+                lat,
+                lon,
+                Constants.Coords.METRIC
+            )
+        } returns Single.just(
             createSampleForecastResponse()
         )
         every { forecastLocalDataSource.insertForecast(createSampleForecastResponse()) } just runs

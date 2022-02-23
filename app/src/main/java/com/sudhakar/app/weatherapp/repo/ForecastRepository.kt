@@ -20,21 +20,29 @@ class ForecastRepository @Inject constructor(
 
     private val forecastListRateLimit = RateLimiter<String>(30, TimeUnit.SECONDS)
 
-    fun loadForecastByCoord(lat: Double, lon: Double, fetchRequired: Boolean, units: String): LiveData<Resource<ForecastEntity>> {
+    fun loadForecastByCoord(
+        lat: Double,
+        lon: Double,
+        fetchRequired: Boolean,
+        units: String
+    ): LiveData<Resource<ForecastEntity>> {
         return object : NetworkBoundResource<ForecastEntity, ForecastResponse>() {
-            override fun saveCallResult(item: ForecastResponse) = forecastLocalDataSource.insertForecast(
-                item
-            )
+            override fun saveCallResult(item: ForecastResponse) =
+                forecastLocalDataSource.insertForecast(
+                    item
+                )
 
             override fun shouldFetch(data: ForecastEntity?): Boolean = fetchRequired
 
-            override fun loadFromDb(): LiveData<ForecastEntity> = forecastLocalDataSource.getForecast()
+            override fun loadFromDb(): LiveData<ForecastEntity> =
+                forecastLocalDataSource.getForecast()
 
-            override fun createCall(): Single<ForecastResponse> = forecastRemoteDataSource.getForecastByGeoCords(
-                lat,
-                lon,
-                units
-            )
+            override fun createCall(): Single<ForecastResponse> =
+                forecastRemoteDataSource.getForecastByGeoCords(
+                    lat,
+                    lon,
+                    units
+                )
 
             override fun onFetchFailed() = forecastListRateLimit.reset(RATE_LIMITER_TYPE)
         }.asLiveData

@@ -1,7 +1,7 @@
 package com.sudhakar.app.weatherapp.di
 
-import android.content.Context
 import com.algolia.search.saas.places.PlacesClient
+import com.squareup.moshi.Moshi
 import com.sudhakar.app.weatherapp.db.dao.CitiesForSearchDao
 import com.sudhakar.app.weatherapp.db.dao.CurrentWeatherDao
 import com.sudhakar.app.weatherapp.db.dao.ForecastDao
@@ -12,8 +12,6 @@ import com.sudhakar.app.weatherapp.domain.datasource.forecast.ForecastLocalDataS
 import com.sudhakar.app.weatherapp.domain.datasource.forecast.ForecastRemoteDataSource
 import com.sudhakar.app.weatherapp.domain.datasource.searchCities.SearchCitiesLocalDataSource
 import com.sudhakar.app.weatherapp.domain.datasource.searchCities.SearchCitiesRemoteDataSource
-import com.squareup.moshi.Moshi
-import com.sudhakar.app.weatherapp.repo.UserPreferencesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,8 +31,6 @@ object DataSourceModule {
     @Singleton
     fun provideForecastRemoteDataSource(api: WeatherAppAPI) =
         ForecastRemoteDataSource(api)
-
-
 
     @Provides
     @Singleton

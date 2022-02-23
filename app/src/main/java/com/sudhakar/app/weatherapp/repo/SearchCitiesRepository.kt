@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 
-
 class SearchCitiesRepository @Inject constructor(
     private val searchCitiesRemoteDataSource: SearchCitiesRemoteDataSource,
     private val searchCitiesLocalDataSource: SearchCitiesLocalDataSource,
@@ -23,22 +22,25 @@ class SearchCitiesRepository @Inject constructor(
 
     fun loadCitiesByCityName(cityName: String?): LiveData<Resource<List<CitiesForSearchEntity>>> {
         return object : NetworkBoundResource<List<CitiesForSearchEntity>, SearchResponse>() {
-            override fun saveCallResult(item: SearchResponse) = searchCitiesLocalDataSource.insertCities(
-                item
-            )
+            override fun saveCallResult(item: SearchResponse) =
+                searchCitiesLocalDataSource.insertCities(
+                    item
+                )
 
             override fun shouldFetch(data: List<CitiesForSearchEntity>?): Boolean {
                 return data == null || data.isEmpty()
             }
 
-            override fun loadFromDb(): LiveData<List<CitiesForSearchEntity>> = searchCitiesLocalDataSource.getCityByName(
-                cityName
-            )
+            override fun loadFromDb(): LiveData<List<CitiesForSearchEntity>> =
+                searchCitiesLocalDataSource.getCityByName(
+                    cityName
+                )
 
-            override fun createCall(): Single<SearchResponse> = searchCitiesRemoteDataSource.getCityWithQuery(
-                cityName
-                    ?: ""
-            )
+            override fun createCall(): Single<SearchResponse> =
+                searchCitiesRemoteDataSource.getCityWithQuery(
+                    cityName
+                        ?: ""
+                )
 
             override fun onFetchFailed() = rateLimiter.reset(RATE_LIMITER_TYPE)
         }.asLiveData

@@ -5,6 +5,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.common.truth.Truth
 import com.sudhakar.app.weatherapp.core.Constants
 import com.sudhakar.app.weatherapp.db.entity.CurrentWeatherEntity
 import com.sudhakar.app.weatherapp.domain.datasource.currentWeather.CurrentWeatherLocalDataSource
@@ -13,7 +14,6 @@ import com.sudhakar.app.weatherapp.util.createSampleCurrentWeatherResponse
 import com.sudhakar.app.weatherapp.util.generateCurrentWeatherEntity
 import com.sudhakar.app.weatherapp.utils.domain.Resource
 import com.sudhakar.app.weatherapp.utils.domain.Status
-import com.google.common.truth.Truth
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import io.reactivex.Single
@@ -68,7 +68,7 @@ class CurrentWeatherRepositoryTest {
                 Constants.Coords.METRIC
             )
         } returns
-            Single.just(createSampleCurrentWeatherResponse())
+                Single.just(createSampleCurrentWeatherResponse())
 
         currentWeatherRepository
             .loadCurrentWeatherByGeoCords(lat, lon, fetchRequired, Constants.Coords.METRIC)
@@ -96,7 +96,8 @@ class CurrentWeatherRepositoryTest {
         val currentWeatherEntity = currentWeatherEntitySlots[0]
         Truth.assertThat(currentWeatherEntity.status).isEqualTo(Status.SUCCESS)
         Truth.assertThat(currentWeatherEntity.data?.name).isEqualTo("Istanbul")
-        Truth.assertThat(currentWeatherEntity.data?.id).isEqualTo(1) // generateCurrentWeatherEntity("Istanbul", 1) returns id as 1
+        Truth.assertThat(currentWeatherEntity.data?.id)
+            .isEqualTo(1) // generateCurrentWeatherEntity("Istanbul", 1) returns id as 1
     }
 
     @Test

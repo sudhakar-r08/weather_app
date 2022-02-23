@@ -1,7 +1,6 @@
 package com.sudhakar.app.weatherapp.di
 
 import android.content.Context
-import android.preference.PreferenceManager
 import com.squareup.moshi.Moshi
 import com.sudhakar.app.weatherapp.repo.UserPreferencesRepository
 import dagger.Module
@@ -17,7 +16,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(@ApplicationContext context: Context) = UserPreferencesRepository.getInstance(context)
+    fun provideSharedPreferences(@ApplicationContext context: Context) =
+        UserPreferencesRepository.getInstance(context)
 
     @Provides
     @Singleton

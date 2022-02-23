@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 
 
-
 @VisibleForTesting(otherwise = VisibleForTesting.NONE)
 fun <T> LiveData<T>.getOrAwaitValue(
     time: Long = 2,
@@ -65,7 +64,12 @@ fun createSampleForecastResponse(id: Int, cityName: String): ForecastEntity {
     return ForecastEntity(id, CityEntity("India", CoordEntity(34.0, 30.0), cityName, 34), list)
 }
 
-fun createSampleForecastWithCoord(id: Int, cityName: String, lat: Double, lon: Double): ForecastEntity {
+fun createSampleForecastWithCoord(
+    id: Int,
+    cityName: String,
+    lat: Double,
+    lon: Double
+): ForecastEntity {
     val list = emptyList<ListItem>()
     return ForecastEntity(id, CityEntity("India", CoordEntity(lon, lat), cityName, 34), list)
 }
@@ -77,7 +81,18 @@ fun generateCitiesForSearchEntity(id: String, name: String): CitiesForSearchEnti
 fun generateCurrentWeatherEntity(name: String, id: Int): CurrentWeatherEntity {
     val weatherItem = WeatherItem("12d", "clouds", "cloud & sun", 1)
     val weather = listOf(weatherItem)
-    return CurrentWeatherEntity(1, 2, MainEntity(34.0, 30.0, 2.0, 321.0, 21, 132.0, 12.0, 35.0), null, 3421399123, weather, name, id, "Celciues", null)
+    return CurrentWeatherEntity(
+        1,
+        2,
+        MainEntity(34.0, 30.0, 2.0, 321.0, 21, 132.0, 12.0, 35.0),
+        null,
+        3421399123,
+        weather,
+        name,
+        id,
+        "Celciues",
+        null
+    )
 }
 
 fun createSampleForecastResponse(): ForecastResponse {
@@ -123,11 +138,21 @@ fun generateSampleSearchCitiesResponse(): SearchResponse {
     return SearchResponse(
         listOf(
             HitsItem(
-                "India", null, isCity = true, isCountry = false,
+                "India",
+                null,
+                isCity = true,
+                isCountry = false,
                 administrative = listOf(
                     "İstanbul"
                 ),
-                adminLevel = null, postcode = null, county = listOf("Beyoğlu"), geoloc = null, importance = null, objectID = "10", isSuburb = null, localeNames = null
+                adminLevel = null,
+                postcode = null,
+                county = listOf("Beyoğlu"),
+                geoloc = null,
+                importance = null,
+                objectID = "10",
+                isSuburb = null,
+                localeNames = null
             )
         )
     )

@@ -8,7 +8,6 @@ import com.sudhakar.app.weatherapp.domain.model.Wind
 import kotlinx.parcelize.Parcelize
 
 
-
 @Parcelize
 @Entity(tableName = "Wind")
 data class WindEntity(

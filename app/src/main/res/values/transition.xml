@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--        Transition name to uniquely identify each view -->
+    <!--        Transition name to uniquely identify each view -->
     <string name="cardView">cardview %s</string>
     <string name="forecastIcon">forecast %s</string>
     <string name="dayOfWeek">dayofweek %s</string>

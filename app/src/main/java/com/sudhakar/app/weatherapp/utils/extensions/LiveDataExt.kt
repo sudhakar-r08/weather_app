@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 
 
-
 inline fun <T : Any> LiveData<T>.observeWith(
     lifecycleOwner: LifecycleOwner,
     crossinline onChanged: (T) -> Unit

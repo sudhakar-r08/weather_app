@@ -1,10 +1,10 @@
 package com.sudhakar.app.weatherapp.utils.typeconverters
 
 import androidx.room.TypeConverter
-import com.sudhakar.app.weatherapp.domain.model.ListItem
-import com.sudhakar.app.weatherapp.domain.model.WeatherItem
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
+import com.sudhakar.app.weatherapp.domain.model.ListItem
+import com.sudhakar.app.weatherapp.domain.model.WeatherItem
 
 
 object DataConverter {

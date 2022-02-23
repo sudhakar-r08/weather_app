@@ -10,7 +10,6 @@ import com.sudhakar.app.weatherapp.databinding.ItemForecastBinding
 import com.sudhakar.app.weatherapp.domain.model.ListItem
 
 
-
 class ForecastAdapter(
     private val callBack: (ListItem, View, View, View, View) -> Unit
 ) : BaseAdapter<ListItem>(diffCallback) {

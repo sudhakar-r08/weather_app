@@ -6,13 +6,14 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.common.truth.Truth
 import com.sudhakar.app.weatherapp.domain.usecase.CurrentWeatherUseCase
 import com.sudhakar.app.weatherapp.domain.usecase.ForecastUseCase
+import com.sudhakar.app.weatherapp.repo.UserPreferencesRepository
 import com.sudhakar.app.weatherapp.ui.dashboard.CurrentWeatherViewState
 import com.sudhakar.app.weatherapp.ui.dashboard.DashboardFragmentViewModel
 import com.sudhakar.app.weatherapp.ui.dashboard.ForecastViewState
 import com.sudhakar.app.weatherapp.utils.domain.Status
-import com.google.common.truth.Truth
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -40,7 +41,7 @@ class DashboardViewModelTest {
     lateinit var forecastUseCase: ForecastUseCase
 
     @MockK
-    lateinit var sharedPreferences: SharedPreferences
+    lateinit var sharedPreferences: UserPreferencesRepository
 
     private lateinit var dashboardFragmentViewModel: DashboardFragmentViewModel
 

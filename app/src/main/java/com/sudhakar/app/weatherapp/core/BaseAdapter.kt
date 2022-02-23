@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import com.sudhakar.app.weatherapp.R
 
 
-
-abstract class BaseAdapter<T>(callback: DiffUtil.ItemCallback<T>) : ListAdapter<T, BaseViewHolder<ViewDataBinding>>(
-    callback
-) {
+abstract class BaseAdapter<T>(callback: DiffUtil.ItemCallback<T>) :
+    ListAdapter<T, BaseViewHolder<ViewDataBinding>>(
+        callback
+    ) {
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewDataBinding>, position: Int) {
         (holder as BaseViewHolder<*>).binding.root.setTag(R.string.position, position)
