@@ -1,6 +1,5 @@
 package com.sudhakar.app.weatherapp.repo
 
-import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -10,6 +9,7 @@ import com.sudhakar.app.weatherapp.core.Constants
 import com.sudhakar.app.weatherapp.db.entity.ForecastEntity
 import com.sudhakar.app.weatherapp.domain.datasource.forecast.ForecastLocalDataSource
 import com.sudhakar.app.weatherapp.domain.datasource.forecast.ForecastRemoteDataSource
+import com.sudhakar.app.weatherapp.util.cityName_2
 import com.sudhakar.app.weatherapp.util.createSampleForecastResponse
 import com.sudhakar.app.weatherapp.utils.domain.Resource
 import com.sudhakar.app.weatherapp.utils.domain.Status
@@ -20,9 +20,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.annotation.Config
 
-@Config(sdk = [Build.VERSION_CODES.P])
+
 @RunWith(AndroidJUnit4::class)
 class ForecastRepositoryTest {
 
@@ -51,7 +50,7 @@ class ForecastRepositoryTest {
         val lat = 30.0
         val lon = 34.0
         val forecastLiveData: MutableLiveData<ForecastEntity> = MutableLiveData()
-        forecastLiveData.postValue(createSampleForecastResponse(1, "Istanbul"))
+        forecastLiveData.postValue(createSampleForecastResponse(1, cityName_2))
         val mockedObserver: Observer<Resource<ForecastEntity>> = mockk(relaxUnitFun = true)
 
         // When
@@ -90,7 +89,7 @@ class ForecastRepositoryTest {
 
         val forecastEntity = forecastEntitySlots[0]
         Truth.assertThat(forecastEntity.status).isEqualTo(Status.SUCCESS)
-        Truth.assertThat(forecastEntity.data?.city?.cityName).isEqualTo("Istanbul")
+        Truth.assertThat(forecastEntity.data?.city?.cityName).isEqualTo(cityName_2)
         Truth.assertThat(forecastEntity.data?.id)
             .isEqualTo(1) // createSampleForecastResponse(1, "Istanbul") returns id as 1
     }
@@ -137,7 +136,7 @@ class ForecastRepositoryTest {
 
         val forecastEntity = forecastEntitySlots[0]
 
-        Truth.assertThat(forecastEntity.data?.city?.cityName).isEqualTo("Istanbul")
+        Truth.assertThat(forecastEntity.data?.city?.cityName).isEqualTo(cityName_2)
         // ForecastEntity(forecastResponse : ForecastResponse) constructor defines id as 0
         Truth.assertThat(forecastEntity.data?.id).isEqualTo(0)
     }

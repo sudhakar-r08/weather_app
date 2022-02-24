@@ -32,7 +32,7 @@ fun <T> LiveData<T>.getOrAwaitValue(
 
         // Don't wait indefinitely if the LiveData is not set.
         if (!latch.await(time, timeUnit)) {
-            throw TimeoutException("LiveData value was never set.")
+            throw TimeoutException(timeoutExceptionMessage)
         }
     } finally {
         this.removeObserver(observer)
@@ -44,24 +44,29 @@ fun <T> LiveData<T>.getOrAwaitValue(
 
 // Data Generators
 fun createSampleForecastResponse(id: Int, cityName: String): ForecastEntity {
-    val weatherItem = WeatherItem("12d", "clouds", "cloud & sun", 1)
+    val weatherItem =
+        WeatherItem(weatherItemIcon, weatherItemDescription, weatherItemMain, weatherItemId)
     val weather = listOf(weatherItem)
     val listItem = ListItem(
-        123123, Rain(12.0), "132121", Snow(12.0), weather,
+        123123, Rain(rain3h), "132121", Snow(snow3h), weather,
         Main(
-            34.0,
-            30.0,
-            2.0,
-            321.0,
-            21,
-            132.0,
-            12.0,
-            35.0
+            weatherMainTemp,
+            weatherMainTempMin,
+            weatherMainGrndLevel,
+            weatherMainTempKf,
+            weatherMainHumidity,
+            weatherMainPressure,
+            weatherMainSeaLevel,
+            weatherMainTempMax
         ),
-        Clouds(1), Sys("a"), Wind(12.0, 12.0)
+        Clouds(1), Sys("a"), Wind(windDeg, windSpeed)
     )
     val list = listOf(listItem)
-    return ForecastEntity(id, CityEntity("India", CoordEntity(34.0, 30.0), cityName, 34), list)
+    return ForecastEntity(
+        id,
+        CityEntity(country, CoordEntity(coordLon_2, coordLat_2), cityName, cityId),
+        list
+    )
 }
 
 fun createSampleForecastWithCoord(
@@ -71,50 +76,69 @@ fun createSampleForecastWithCoord(
     lon: Double
 ): ForecastEntity {
     val list = emptyList<ListItem>()
-    return ForecastEntity(id, CityEntity("India", CoordEntity(lon, lat), cityName, 34), list)
+    return ForecastEntity(id, CityEntity(country, CoordEntity(lon, lat), cityName, cityId), list)
 }
 
 fun generateCitiesForSearchEntity(id: String, name: String): CitiesForSearchEntity {
-    return CitiesForSearchEntity("Clear", "India", CoordEntity(34.0, 30.0), name, "Beyoglu", 1, id)
+    return CitiesForSearchEntity(
+        "Clear",
+        country,
+        CoordEntity(coordLon_2, coordLat_2),
+        name,
+        county,
+        1,
+        id
+    )
 }
 
 fun generateCurrentWeatherEntity(name: String, id: Int): CurrentWeatherEntity {
-    val weatherItem = WeatherItem("12d", "clouds", "cloud & sun", 1)
+    val weatherItem =
+        WeatherItem(weatherItemIcon, weatherItemDescription, weatherItemMain, weatherItemId)
     val weather = listOf(weatherItem)
     return CurrentWeatherEntity(
         1,
         2,
-        MainEntity(34.0, 30.0, 2.0, 321.0, 21, 132.0, 12.0, 35.0),
+        MainEntity(
+            weatherMainTemp,
+            weatherMainTempMin,
+            weatherMainGrndLevel,
+            weatherMainTempKf,
+            weatherMainHumidity,
+            weatherMainPressure,
+            weatherMainSeaLevel,
+            weatherMainTempMax
+        ),
         null,
         3421399123,
         weather,
         name,
         id,
-        "Celciues",
+        tempScale,
         null
     )
 }
 
 fun createSampleForecastResponse(): ForecastResponse {
-    val weatherItem = WeatherItem("12d", "clouds", "cloud & sun", 1)
+    val weatherItem =
+        WeatherItem(weatherItemIcon, weatherItemDescription, weatherItemMain, weatherItemId)
     val weather = listOf(weatherItem)
     val listItem = ListItem(
-        123123, Rain(12.0), "132121", Snow(12.0), weather,
+        123123, Rain(rain3h), "132121", Snow(snow3h), weather,
         Main(
-            34.0,
-            30.0,
-            2.0,
-            321.0,
-            21,
-            132.0,
-            12.0,
-            35.0
+            weatherMainTemp,
+            weatherMainTempMin,
+            weatherMainGrndLevel,
+            weatherMainTempKf,
+            weatherMainHumidity,
+            weatherMainPressure,
+            weatherMainSeaLevel,
+            weatherMainTempMax
         ),
-        Clouds(1), Sys("a"), Wind(12.0, 12.0)
+        Clouds(1), Sys("a"), Wind(windDeg, windSpeed)
     )
     val list = listOf(listItem)
     return ForecastResponse(
-        City("India", Coord(32.32, 30.30), "Istanbul", 10),
+        City(country, Coord(coordLon, coordLat), city, 10),
         null,
         null,
         null,
@@ -123,14 +147,34 @@ fun createSampleForecastResponse(): ForecastResponse {
 }
 
 fun createSampleCurrentWeatherResponse(): CurrentWeatherResponse {
-    val weatherItem = WeatherItem("12d", "clouds", "cloud & sun", 1)
+    val weatherItem =
+        WeatherItem(weatherItemIcon, weatherItemDescription, weatherItemMain, weatherItemId)
     val weather = listOf(weatherItem)
     return CurrentWeatherResponse(
-        null, null, Main(34.0, 30.0, 2.0, 321.0, 21, 132.0, 12.0, 35.0),
+        null,
+        null,
+        Main(
+            weatherMainTemp,
+            weatherMainTempMin,
+            weatherMainGrndLevel,
+            weatherMainTempKf,
+            weatherMainHumidity,
+            weatherMainPressure,
+            weatherMainSeaLevel,
+            weatherMainTempMax
+        ),
         Clouds(
             1
         ),
-        Sys("a"), null, Coord(32.32, 30.30), weather, "Istanbul", null, 10, null, null
+        Sys("a"),
+        null,
+        Coord(coordLon, coordLat),
+        weather,
+        city,
+        null,
+        10,
+        null,
+        null
     )
 }
 
@@ -138,16 +182,16 @@ fun generateSampleSearchCitiesResponse(): SearchResponse {
     return SearchResponse(
         listOf(
             HitsItem(
-                "India",
+                country,
                 null,
                 isCity = true,
                 isCountry = false,
                 administrative = listOf(
-                    "İstanbul"
+                    city
                 ),
                 adminLevel = null,
                 postcode = null,
-                county = listOf("Beyoğlu"),
+                county = listOf(county),
                 geoloc = null,
                 importance = null,
                 objectID = "10",

@@ -1,6 +1,5 @@
 package com.sudhakar.app.weatherapp.viewModel
 
-import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
@@ -10,6 +9,7 @@ import com.sudhakar.app.weatherapp.db.WeatherDatabase
 import com.sudhakar.app.weatherapp.db.dao.ForecastDao
 import com.sudhakar.app.weatherapp.domain.datasource.forecast.ForecastLocalDataSource
 import com.sudhakar.app.weatherapp.ui.weather_detail.WeatherDetailViewModel
+import com.sudhakar.app.weatherapp.util.cityName_2
 import com.sudhakar.app.weatherapp.util.createSampleForecastResponse
 import com.sudhakar.app.weatherapp.util.getOrAwaitValue
 import io.mockk.MockKAnnotations
@@ -18,10 +18,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.annotation.Config
 
 
-@Config(sdk = [Build.VERSION_CODES.P])
 @RunWith(AndroidJUnit4::class)
 class WeatherDetailViewModelTest {
 
@@ -61,6 +59,6 @@ class WeatherDetailViewModelTest {
 
         // Then
         val result = weatherDetailViewModel.getForecast().getOrAwaitValue()
-        Truth.assertThat(result.city?.cityName).isEqualTo("Istanbul")
+        Truth.assertThat(result.city?.cityName).isEqualTo(cityName_2)
     }
 }

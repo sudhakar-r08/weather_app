@@ -1,6 +1,5 @@
 package com.sudhakar.app.weatherapp
 
-import android.os.Build
 import com.sudhakar.app.weatherapp.dao.CitiesForSearchDaoTest
 import com.sudhakar.app.weatherapp.dao.CurrentWeatherDaoTest
 import com.sudhakar.app.weatherapp.dao.ForecastDaoTest
@@ -14,9 +13,7 @@ import com.sudhakar.app.weatherapp.viewState.ForecastViewStateTest
 import com.sudhakar.app.weatherapp.viewState.SearchViewStateTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
-import org.robolectric.annotation.Config
 
-@Config(sdk = [Build.VERSION_CODES.R])
 @RunWith(Suite::class)
 @Suite.SuiteClasses(
     CitiesForSearchDaoTest::class,

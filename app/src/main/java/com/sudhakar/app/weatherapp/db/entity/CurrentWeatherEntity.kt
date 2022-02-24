@@ -1,15 +1,10 @@
 package com.sudhakar.app.weatherapp.db.entity
 
-import android.graphics.Color
 import android.os.Parcelable
 import androidx.room.*
 import com.sudhakar.app.weatherapp.domain.model.CurrentWeatherResponse
 import com.sudhakar.app.weatherapp.domain.model.WeatherItem
 import kotlinx.parcelize.Parcelize
-import org.threeten.bp.DayOfWeek
-import org.threeten.bp.LocalDate
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 @Parcelize
@@ -55,34 +50,4 @@ data class CurrentWeatherEntity(
         return weather?.first()
     }
 
-    private fun getDateTime(s: Long): DayOfWeek? {
-        return try {
-            val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.US)
-            val netDate = Date(s * 1000)
-            val formattedDate = sdf.format(netDate)
-
-            LocalDate.of(
-                formattedDate.substringAfterLast("/").toInt(),
-                formattedDate.substringAfter("/").take(2).toInt(),
-                formattedDate.substringBefore("/").toInt()
-            )
-                .dayOfWeek
-        } catch (e: Exception) {
-            e.printStackTrace()
-            DayOfWeek.MONDAY
-        }
-    }
-
-    fun getColor(): Int {
-        return when (dt?.let { getDateTime(it) }) {
-            DayOfWeek.MONDAY -> Color.parseColor("#28E0AE")
-            DayOfWeek.TUESDAY -> Color.parseColor("#FF0090")
-            DayOfWeek.WEDNESDAY -> Color.parseColor("#FFAE00")
-            DayOfWeek.THURSDAY -> Color.parseColor("#0090FF")
-            DayOfWeek.FRIDAY -> Color.parseColor("#DC0000")
-            DayOfWeek.SATURDAY -> Color.parseColor("#0051FF")
-            DayOfWeek.SUNDAY -> Color.parseColor("#3D28E0")
-            else -> Color.parseColor("#28E0AE")
-        }
-    }
 }

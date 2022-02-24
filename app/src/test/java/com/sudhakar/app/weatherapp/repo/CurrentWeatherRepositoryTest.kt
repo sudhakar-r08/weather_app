@@ -1,6 +1,5 @@
 package com.sudhakar.app.weatherapp.repo
 
-import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -10,6 +9,7 @@ import com.sudhakar.app.weatherapp.core.Constants
 import com.sudhakar.app.weatherapp.db.entity.CurrentWeatherEntity
 import com.sudhakar.app.weatherapp.domain.datasource.currentWeather.CurrentWeatherLocalDataSource
 import com.sudhakar.app.weatherapp.domain.datasource.currentWeather.CurrentWeatherRemoteDataSource
+import com.sudhakar.app.weatherapp.util.cityName_2
 import com.sudhakar.app.weatherapp.util.createSampleCurrentWeatherResponse
 import com.sudhakar.app.weatherapp.util.generateCurrentWeatherEntity
 import com.sudhakar.app.weatherapp.utils.domain.Resource
@@ -21,10 +21,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.annotation.Config
 
 
-@Config(sdk = [Build.VERSION_CODES.P])
 @RunWith(AndroidJUnit4::class)
 class CurrentWeatherRepositoryTest {
 
@@ -56,7 +54,7 @@ class CurrentWeatherRepositoryTest {
         val lat = 30.0
         val lon = 34.0
         val currentWeatherLiveData: MutableLiveData<CurrentWeatherEntity> = MutableLiveData()
-        currentWeatherLiveData.postValue(generateCurrentWeatherEntity("Istanbul", 1))
+        currentWeatherLiveData.postValue(generateCurrentWeatherEntity(cityName_2, 1))
         val mockedObserver: Observer<Resource<CurrentWeatherEntity>> = mockk(relaxUnitFun = true)
 
         // When
@@ -95,7 +93,7 @@ class CurrentWeatherRepositoryTest {
 
         val currentWeatherEntity = currentWeatherEntitySlots[0]
         Truth.assertThat(currentWeatherEntity.status).isEqualTo(Status.SUCCESS)
-        Truth.assertThat(currentWeatherEntity.data?.name).isEqualTo("Istanbul")
+        Truth.assertThat(currentWeatherEntity.data?.name).isEqualTo(cityName_2)
         Truth.assertThat(currentWeatherEntity.data?.id)
             .isEqualTo(1) // generateCurrentWeatherEntity("Istanbul", 1) returns id as 1
     }
@@ -150,7 +148,7 @@ class CurrentWeatherRepositoryTest {
 
         val currentWeatherEntity = currentWeatherEntitySlots[0]
 
-        Truth.assertThat(currentWeatherEntity.data?.name).isEqualTo("Istanbul")
+        Truth.assertThat(currentWeatherEntity.data?.name).isEqualTo(cityName_2)
         // CurrentWeatherEntity(currentWeatherResponse : CurrentWeatherResponse) constructor defines id as 0
         Truth.assertThat(currentWeatherEntity.data?.id).isEqualTo(0)
     }

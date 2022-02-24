@@ -1,7 +1,5 @@
 package com.sudhakar.app.weatherapp.viewModel
 
-import android.content.SharedPreferences
-import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -13,6 +11,10 @@ import com.sudhakar.app.weatherapp.repo.UserPreferencesRepository
 import com.sudhakar.app.weatherapp.ui.dashboard.CurrentWeatherViewState
 import com.sudhakar.app.weatherapp.ui.dashboard.DashboardFragmentViewModel
 import com.sudhakar.app.weatherapp.ui.dashboard.ForecastViewState
+import com.sudhakar.app.weatherapp.util.dashBoardCoordLat
+import com.sudhakar.app.weatherapp.util.dashBoardCoordLon
+import com.sudhakar.app.weatherapp.util.dashBoardUnit
+import com.sudhakar.app.weatherapp.util.errorUnhandledException
 import com.sudhakar.app.weatherapp.utils.domain.Status
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -23,10 +25,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.annotation.Config
 
 
-@Config(sdk = [Build.VERSION_CODES.P])
 @RunWith(AndroidJUnit4::class)
 class DashboardViewModelTest {
 
@@ -67,7 +67,12 @@ class DashboardViewModelTest {
         // When
         every { forecastUseCase.execute(any()) } returns viewStateLiveData
         dashboardFragmentViewModel.setForecastParams(
-            ForecastUseCase.ForecastParams("30", "32", true, "metric")
+            ForecastUseCase.ForecastParams(
+                dashBoardCoordLat,
+                dashBoardCoordLon,
+                true,
+                dashBoardUnit
+            )
         )
 
         // Then
@@ -85,12 +90,17 @@ class DashboardViewModelTest {
         dashboardFragmentViewModel.getForecastViewState().observeForever(viewStateObserver)
 
         val viewStateLiveData: MutableLiveData<ForecastViewState> = MutableLiveData()
-        viewStateLiveData.postValue(ForecastViewState(Status.ERROR, "Unhandled Exception", null))
+        viewStateLiveData.postValue(ForecastViewState(Status.ERROR, errorUnhandledException, null))
 
         // When
         every { forecastUseCase.execute(any()) } returns viewStateLiveData
         dashboardFragmentViewModel.setForecastParams(
-            ForecastUseCase.ForecastParams("30", "32", true, "metric")
+            ForecastUseCase.ForecastParams(
+                dashBoardCoordLat,
+                dashBoardCoordLon,
+                true,
+                dashBoardUnit
+            )
         )
 
         // Then
@@ -113,7 +123,12 @@ class DashboardViewModelTest {
         // When
         every { forecastUseCase.execute(any()) } returns viewStateLiveData
         dashboardFragmentViewModel.setForecastParams(
-            ForecastUseCase.ForecastParams("30", "32", true, "metric")
+            ForecastUseCase.ForecastParams(
+                dashBoardCoordLat,
+                dashBoardCoordLon,
+                true,
+                dashBoardUnit
+            )
         )
 
         // Then
@@ -136,7 +151,12 @@ class DashboardViewModelTest {
         // When
         every { currentWeatherUseCase.execute(any()) } returns viewStateLiveData
         dashboardFragmentViewModel.setCurrentWeatherParams(
-            CurrentWeatherUseCase.CurrentWeatherParams("30", "32", true, "metric")
+            CurrentWeatherUseCase.CurrentWeatherParams(
+                dashBoardCoordLat,
+                dashBoardCoordLon,
+                true,
+                dashBoardUnit
+            )
         )
 
         // Then
@@ -159,7 +179,12 @@ class DashboardViewModelTest {
         // When
         every { currentWeatherUseCase.execute(any()) } returns viewStateLiveData
         dashboardFragmentViewModel.setCurrentWeatherParams(
-            CurrentWeatherUseCase.CurrentWeatherParams("30", "32", true, "metric")
+            CurrentWeatherUseCase.CurrentWeatherParams(
+                dashBoardCoordLat,
+                dashBoardCoordLon,
+                true,
+                dashBoardUnit
+            )
         )
 
         // Then
@@ -182,7 +207,12 @@ class DashboardViewModelTest {
         // When
         every { currentWeatherUseCase.execute(any()) } returns viewStateLiveData
         dashboardFragmentViewModel.setCurrentWeatherParams(
-            CurrentWeatherUseCase.CurrentWeatherParams("30", "32", true, "metric")
+            CurrentWeatherUseCase.CurrentWeatherParams(
+                dashBoardCoordLat,
+                dashBoardCoordLon,
+                true,
+                dashBoardUnit
+            )
         )
 
         // Then

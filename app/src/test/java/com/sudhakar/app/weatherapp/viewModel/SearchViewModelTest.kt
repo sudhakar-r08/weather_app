@@ -1,7 +1,5 @@
 package com.sudhakar.app.weatherapp.viewModel
 
-import android.content.SharedPreferences
-import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -11,6 +9,7 @@ import com.sudhakar.app.weatherapp.domain.usecase.SearchCitiesUseCase
 import com.sudhakar.app.weatherapp.repo.UserPreferencesRepository
 import com.sudhakar.app.weatherapp.ui.search.SearchViewModel
 import com.sudhakar.app.weatherapp.ui.search.SearchViewState
+import com.sudhakar.app.weatherapp.util.paramCity
 import com.sudhakar.app.weatherapp.utils.domain.Status
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -21,10 +20,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.annotation.Config
 
 
-@Config(sdk = [Build.VERSION_CODES.P])
 @RunWith(AndroidJUnit4::class)
 class SearchViewModelTest {
 
@@ -57,7 +54,7 @@ class SearchViewModelTest {
 
         // When
         every { searchCitiesUseCase.execute(any()) } returns viewStateLiveData
-        searchViewModel.setSearchParams(SearchCitiesUseCase.SearchCitiesParams("city"))
+        searchViewModel.setSearchParams(SearchCitiesUseCase.SearchCitiesParams(paramCity))
 
         // Then
         val forecastViewStateSlots = mutableListOf<SearchViewState>()
@@ -78,7 +75,7 @@ class SearchViewModelTest {
 
         // When
         every { searchCitiesUseCase.execute(any()) } returns viewStateLiveData
-        searchViewModel.setSearchParams(SearchCitiesUseCase.SearchCitiesParams("city"))
+        searchViewModel.setSearchParams(SearchCitiesUseCase.SearchCitiesParams(paramCity))
 
         // Then
         val forecastViewStateSlots = mutableListOf<SearchViewState>()
@@ -99,7 +96,7 @@ class SearchViewModelTest {
 
         // When
         every { searchCitiesUseCase.execute(any()) } returns viewStateLiveData
-        searchViewModel.setSearchParams(SearchCitiesUseCase.SearchCitiesParams("city"))
+        searchViewModel.setSearchParams(SearchCitiesUseCase.SearchCitiesParams(paramCity))
 
         // Then
         val forecastViewStateSlots = mutableListOf<SearchViewState>()

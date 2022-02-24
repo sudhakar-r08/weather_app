@@ -1,11 +1,9 @@
 package com.sudhakar.app.weatherapp.ui.main
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
+import android.view.*
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -33,9 +31,14 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(
 
     private fun setTransparentStatusBar() {
         window.apply {
-            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+
             addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                insetsController?.hide(WindowInsets.Type.statusBars())
+            } else {
+                decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+            }
             statusBarColor = Color.TRANSPARENT
         }
     }
@@ -79,12 +82,6 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(
                 }
             }
         }
-    }
-
-    override fun onBackPressed() {
-
-        super.onBackPressed()
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,16 +1,14 @@
 package com.sudhakar.app.weatherapp.viewState
 
-import android.os.Build
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth
 import com.sudhakar.app.weatherapp.ui.dashboard.CurrentWeatherViewState
+import com.sudhakar.app.weatherapp.util.interrnalServerError
 import com.sudhakar.app.weatherapp.utils.domain.Status
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.annotation.Config
 
 
-@Config(sdk = [Build.VERSION_CODES.P])
 @RunWith(AndroidJUnit4::class)
 class CurrentWeatherViewStateTest {
 
@@ -58,14 +56,13 @@ class CurrentWeatherViewStateTest {
         val givenViewState =
             CurrentWeatherViewState(
                 status = Status.ERROR,
-                error = "500 Internal Server Error"
+                error = interrnalServerError
             )
-
         // When
         val actualResult = givenViewState.getErrorMessage()
 
         // Then
-        Truth.assertThat(actualResult).isEqualTo("500 Internal Server Error")
+        Truth.assertThat(actualResult).isEqualTo(interrnalServerError)
     }
 
     @Test
@@ -74,9 +71,8 @@ class CurrentWeatherViewStateTest {
         val givenViewState =
             CurrentWeatherViewState(
                 status = Status.ERROR,
-                error = "500 Internal Server Error"
+                error = interrnalServerError
             )
-
         // When
         val actualResult = givenViewState.shouldShowErrorMessage()
 
