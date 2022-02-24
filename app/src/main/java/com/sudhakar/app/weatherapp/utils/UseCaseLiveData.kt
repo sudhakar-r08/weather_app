@@ -21,6 +21,4 @@ abstract class UseCaseLiveData<M, P, R> {
     }
 
     abstract class Params
-
-    class None
 }
