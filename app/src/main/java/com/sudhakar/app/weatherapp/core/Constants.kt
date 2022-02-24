@@ -8,6 +8,7 @@ object Constants {
         const val API_KEY_VALUE = "1487dd8a93bfd85d278d9ac8dcfee94c"
         const val RATE_LIMITER_TYPE = "data"
         const val API_KEY_QUERY = "appid"
+        const val TIMEOUT = 30
     }
 
     object AlgoliaKeys {

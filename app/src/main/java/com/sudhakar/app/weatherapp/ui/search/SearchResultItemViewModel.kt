@@ -1,4 +1,4 @@
-package com.sudhakar.app.weatherapp.ui.search.result
+package com.sudhakar.app.weatherapp.ui.search
 
 import androidx.databinding.ObservableField
 import com.sudhakar.app.weatherapp.core.BaseViewModel

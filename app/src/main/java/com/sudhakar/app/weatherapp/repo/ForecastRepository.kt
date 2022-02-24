@@ -2,6 +2,7 @@ package com.sudhakar.app.weatherapp.repo
 
 import androidx.lifecycle.LiveData
 import com.sudhakar.app.weatherapp.core.Constants.NetworkService.RATE_LIMITER_TYPE
+import com.sudhakar.app.weatherapp.core.Constants.NetworkService.TIMEOUT
 import com.sudhakar.app.weatherapp.db.entity.ForecastEntity
 import com.sudhakar.app.weatherapp.domain.datasource.forecast.ForecastLocalDataSource
 import com.sudhakar.app.weatherapp.domain.datasource.forecast.ForecastRemoteDataSource
@@ -18,7 +19,7 @@ class ForecastRepository @Inject constructor(
     private val forecastLocalDataSource: ForecastLocalDataSource
 ) {
 
-    private val forecastListRateLimit = RateLimiter<String>(30, TimeUnit.SECONDS)
+    private val forecastListRateLimit = RateLimiter<String>(TIMEOUT, TimeUnit.SECONDS)
 
     fun loadForecastByCoord(
         lat: Double,

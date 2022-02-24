@@ -12,7 +12,6 @@ import com.sudhakar.app.weatherapp.databinding.FragmentSearchBinding
 import com.sudhakar.app.weatherapp.db.entity.CitiesForSearchEntity
 import com.sudhakar.app.weatherapp.domain.usecase.SearchCitiesUseCase
 import com.sudhakar.app.weatherapp.ui.main.MainActivity
-import com.sudhakar.app.weatherapp.ui.search.result.SearchResultAdapter
 import com.sudhakar.app.weatherapp.utils.extensions.hideKeyboard
 import com.sudhakar.app.weatherapp.utils.extensions.observeWith
 import com.sudhakar.app.weatherapp.utils.extensions.tryCatch
